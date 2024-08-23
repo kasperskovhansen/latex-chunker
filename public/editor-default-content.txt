@@ -1,0 +1,278 @@
+\begin{rag}[
+title="The art of prompting",
+type="content",
+label="prompting",
+parents="{}",
+nooftokens = 580
+]
+Section 1.1: The art of prompting
+
+
+
+As of August 2024, there is a multitude of chatbots available on the internet. Some of them, like
+ChatGPT: https://chatgpt.com, Claude: https://claude.ai and Gemini: https://gemini.google.com (and Llama 3.1, Mistral, ... the list goes on)
+
+
+
+have quite impressive reasoning capabilities. 
+These models are now multimodal i.e., they 
+even accept non-textual input, such as images, sound and video. In principle you can upload a picture of a math exercise and
+the chatbot will provide a solution. Well, that is, on a good day and for a not too difficult exercise.
+
+The use of chatbots is encouraged throughout this course. In fact,
+they are even allowed during the exam. It is my hope that you will
+learn mathematics on a deeper level by communicating with the machine
+using carefully designed prompts - see 
+the OpenAI guide: https://platform.openai.com/docs/guides/prompt-engineering on prompt engineering.
+
+In some places in the notes, you may see quite specific prompts, such as  
+\begin{prompting}
+Always answer in the context described below.
+Context: I am taking a first semester college level course in introductory mathematics and optimization. Emphasis is on precision and small proofs in mathematics. Please give some conrete examples with mathematics involved. 
+
+- Tell me what a good and precise prompt is.
+- Show me two examples of good prompts.
+- What is a good prompt if I want to know about code written in Sage or python?
+- What is a good prompt if I want to know how to enter some specific mathematics in LaTeX?
+\end{prompting} 
+
+*A click on a chatbot link copies the prompt
+to the clipboard and takes you to the chatbot, where you can paste the
+prompt and get feedback*.
+
+The prompt may also be hidden in a button as below.
+
+\begin{prompting}
+Please solve the equation $x^2 - x - 1 = 0$. Guide me through the steps. Make sure that the underlying logic in your arguments is correct.
+\end{prompting}
+
+There is a lot of wisdom baked into those weights! In this first
+chapter I will show a lot of prompts. In the following chapters less so. Here you are expected to prompt the chatbots on your own.
+
+Be careful! Prompting
+without any knowledge of the mathematics can be disastrous. I have seen
+exams written by generative AI spanning many pages with little or no relevant mathematical content.
+This is known as GIGO or garbage in garbage out: https://en.wikipedia.org/wiki/Garbage_in,_garbage_out.
+Good prompting comes from an understanding of the mathematics and often resembles concise
+and beautifully written instructions.
+\end{rag}
+\begin{rag}[
+title="Exercise on prompting llm to act like a tutor",
+type="exercise",
+label="promptingtutor",
+parents="{prompting}",
+nooftokens = 96
+]
+Exercise 1.1:
+
+Study
+the OpenAI guide: https://platform.openai.com/docs/guides/prompt-engineering on prompt engineering.
+
+Then come up with prompts that make a chatbot act like a mathematics tutor for you.
+Here is a small example that you may extend.
+\begin{prompting}
+Please act like a friendly tutor and teach me about the derivatives of simple functions. Test my understanding after each concept you explain.
+\end{prompting}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on prompting for LaTeX instructions",
+type="exercise",
+label="latexprompt",
+parents="{prompting}",
+nooftokens = 122
+]
+Exercise 1.2:
+
+Start your $\LaTeX$ journey using the prompt below.
+\begin{prompting}
+I am doing weekly exercises in mathematics at the college level. Please suggest a very simple template in
+LaTeX for hand in of these exercises. Also, show me how to typeset an equation in LaTeX.
+
+There seems to be a web interface to LaTeX called Overleaf. Please tell me how to access this so that I can
+enter a weekly exercise.
+\end{prompting}
+
+Come up with your own prompt for a question related to software.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on prompting for feedback",
+type="exercise",
+label="feedbackprompt",
+parents="{prompting}",
+nooftokens = 114
+]
+Exercise 1.3:
+
+Below I ask for feedback from the chatbot on some dubious chunk of mathematics.
+\begin{prompting}
+Please give feedback on the mathematics contained in the $\LaTeX$ below in triple quotes. Emphasize logic and precision.
+"""
+$$
+x^2 = 1 \implies x = 1
+$$
+From this it follows that $1 + 1 = 3$.
+"""
+\end{prompting}
+
+Insert your own mathematics in $\LaTeX$ notation and ask for feedback in a prompt.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="How to study",
+type="content",
+label="howtostudy",
+parents="{}",
+nooftokens = 360
+]
+Section 1.2: Black box warnings
+
+
+
+Modern mathematics is perhaps not like
+anything you have encountered so far. It calls for a lot of focus and precision, especially when
+writing down solutions to problems. It is a bit like programming a computer. There is no room for imprecision and half-baked sentences.
+
+This course amounts to $10$ ECTS or approximately $280$ hours. Suppose that you spend
+a week studying for the exam, say $40$ hours. Lectures, exercise classes, and MatLab amount to $14\cdot (4 + 2 + 3)$ hours $= 126$ hours. This leaves around $114$ hours for your own study and immersion. Put in
+other terms, you are supposed to work around $8$ hours per week outside classes for this course. With
+classes, each week calls for $17$ hours of work. There is a very close relationship between the amount
+of hours you log each week and your result at the exam. To state the obvious: numbers don't lie. If you
+put in the time, you will almost certainly do well. Try to allocate time for IMO in your weekly
+schedule and please (ab)use all the help that is provided.
+
+\begin{prompting}
+I am taking a first semester college level mathematics course spanning 14 weeks and 10 ECTS. One ECTS
+amounts to 28 hours. The teaching activities every week amount to 4 hours of lectures,
+2 hours of exercise sessions and 3 hours of study cafe. I expect that final exam will take 40 hours
+of the 10 ECTS. Please schedule a weekly study plan for me along with a plan for the final exam.
+\end{prompting}
+\end{rag}
+\begin{rag}[
+title="Exercise on correcting WolframAlpha error",
+type="exercise",
+label="wolframalpha",
+parents="{prompting}",
+nooftokens = 153
+]
+Exercise 1.4:
+
+Prompt a chatbot with
+\begin{prompting}
+What is 
+$$
+-\sqrt{\frac{1}{2} (1 - \sqrt{2} + \sqrt{3 - 2\sqrt{2}})}
+$$
+\end{prompting}
+
+and explain why the output from WolframAlpha is weird.
+Use prompting to make it explain the mathematics input notation.
+
+Finally use your own mental powers (and feedback from the
+chatbot) to explain what the proper output should have been.
+
+\begin{hint} 
+  $$ 
+  3 - 2 \sqrt{2} = (\sqrt{2} - 1)^2.  
+  $$
+\end{hint} 
+ 
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Introducing Sage and python for computer algebra",
+type="content",
+label="computeralgebra",
+parents="{}",
+nooftokens = 287
+]
+We will use the computer algebra system
+Sage: https://www.sagemath.org/ in exploring and experimenting
+with mathematics. This means that you will have to write small
+commands and code snippets.
+
+Sage is built on top of the very wide
+spread language
+python: https://en.wikipedia.org/wiki/Python_(programming_language)
+and you can in fact enter <footnote>Python code->One may also enter code in several other languages</footnote> in
+the Sage input windows in the interactive notes. First adjust the prompt below
+according to your needs and get feedback from an LLM.
+
+\begin{prompting}
+I am taking a mathematics course that uses the computer algebra system Sage.
+The course uses the browser, where I can enter and run small snippets of code in Sage and python.
+I have no/some/extensive prior programming experience.
+Give me a brief introduction to Sage and explain how it relates to python.
+Finish your reply with a small exercise I can do. 
+If no/some/extensive is present above in this prompt, remark this and only reply with
+Please select your programming experience.
+\end{prompting}
+
+Below is an example of a basic
+graphics command in Sage.  Push the Compute button to evaluate.
+
+
+
+You can install Sage on your own computer following the instructions on
+https://www.sagemath.org/: https://www.sagemath.org/.
+\end{rag}
+\begin{rag}[
+title="Exercise introducing Sage",
+type="exercise",
+label="sageexercise",
+parents="{computeralgebra}",
+nooftokens = 267
+]
+Exercise 1.5:
+
+Did you notice that you can edit and enter new commands in the Sage window?
+Do the following problems using Sage based on the Sage guided tour: http://doc.sagemath.org/html/en/tutorial/tour.html. 
+
+\begin{enumerate}\item (i) Consider $f(x) = x \sin(1/x)$. Plot the graph of $f$ from $0$ to $0.1$. Computing $f(0)$ does not make sense. Do you
+  see a way of assigning a natural value to $f(0)$ using the graph?
+\item (ii) Find an approximate solution with four decimals to the equation $\cos(x) = x$.
+
+\begin{hint}
+    This is an example of an equation, that can only be solved numerically.
+    Try first plotting the graph of $f(x) = x - \cos(x)$ from $0$ to $1$. Then use a
+    suitable function from the Sage guide.
+    \end{hint}
+\item (iii) Compute $\pi$ with $100$ decimals.
+\end{enumerate}
+
+\begin{prompting}
+Give me the sage code to compute pi with 100 decimals. I want a one line command.
+\end{prompting}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on rewriting sum",
+type="exercise",
+label="rewritingsum",
+parents="{}",
+nooftokens = 184
+]
+Exercise 1.6:
+
+Compute the sum
+$$
+\frac{1}{\sqrt{1} + \sqrt{2}} + \frac{1}{\sqrt{2} + \sqrt{3}} + \frac{1}{\sqrt{3} + \sqrt{4}}.
+$$
+
+What is the elegant answer? Explain!
+
+Bonus question:
+Generalize your answer/method to computing the sum
+$$
+\frac{1}{\sqrt{1} + \sqrt{2}} + \frac{1}{\sqrt{2} + \sqrt{3}} + \frac{1}{\sqrt{3} + \sqrt{4}} + \cdots + \frac{1}{\sqrt{N-1} + \sqrt{N}},
+$$
+for $N = 5, 6, 7, \dots$.
+  
+
+/Exercise
+\end{rag}

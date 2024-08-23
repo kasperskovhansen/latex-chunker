@@ -1,0 +1,3647 @@
+\begin{rag}[
+title="The art of prompting",
+type="content",
+label="prompting",
+parents="{}",
+nooftokens = 580
+]
+Section 1.1: The art of prompting
+
+
+
+As of August 2024, there is a multitude of chatbots available on the internet. Some of them, like
+ChatGPT: https://chatgpt.com, Claude: https://claude.ai and Gemini: https://gemini.google.com (and Llama 3.1, Mistral, ... the list goes on)
+
+
+
+have quite impressive reasoning capabilities. 
+These models are now multimodal i.e., they 
+even accept non-textual input, such as images, sound and video. In principle you can upload a picture of a math exercise and
+the chatbot will provide a solution. Well, that is, on a good day and for a not too difficult exercise.
+
+The use of chatbots is encouraged throughout this course. In fact,
+they are even allowed during the exam. It is my hope that you will
+learn mathematics on a deeper level by communicating with the machine
+using carefully designed prompts - see 
+the OpenAI guide: https://platform.openai.com/docs/guides/prompt-engineering on prompt engineering.
+
+In some places in the notes, you may see quite specific prompts, such as  
+\begin{prompting}
+Always answer in the context described below.
+Context: I am taking a first semester college level course in introductory mathematics and optimization. Emphasis is on precision and small proofs in mathematics. Please give some conrete examples with mathematics involved. 
+
+- Tell me what a good and precise prompt is.
+- Show me two examples of good prompts.
+- What is a good prompt if I want to know about code written in Sage or python?
+- What is a good prompt if I want to know how to enter some specific mathematics in LaTeX?
+\end{prompting} 
+
+*A click on a chatbot link copies the prompt
+to the clipboard and takes you to the chatbot, where you can paste the
+prompt and get feedback*.
+
+The prompt may also be hidden in a button as below.
+
+\begin{prompting}
+Please solve the equation $x^2 - x - 1 = 0$. Guide me through the steps. Make sure that the underlying logic in your arguments is correct.
+\end{prompting}
+
+There is a lot of wisdom baked into those weights! In this first
+chapter I will show a lot of prompts. In the following chapters less so. Here you are expected to prompt the chatbots on your own.
+
+Be careful! Prompting
+without any knowledge of the mathematics can be disastrous. I have seen
+exams written by generative AI spanning many pages with little or no relevant mathematical content.
+This is known as GIGO or garbage in garbage out: https://en.wikipedia.org/wiki/Garbage_in,_garbage_out.
+Good prompting comes from an understanding of the mathematics and often resembles concise
+and beautifully written instructions.
+\end{rag}
+\begin{rag}[
+title="Exercise on prompting llm to act like a tutor",
+type="exercise",
+label="promptingtutor",
+parents="{prompting}",
+nooftokens = 96
+]
+Exercise 1.1:
+
+Study
+the OpenAI guide: https://platform.openai.com/docs/guides/prompt-engineering on prompt engineering.
+
+Then come up with prompts that make a chatbot act like a mathematics tutor for you.
+Here is a small example that you may extend.
+\begin{prompting}
+Please act like a friendly tutor and teach me about the derivatives of simple functions. Test my understanding after each concept you explain.
+\end{prompting}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on prompting for LaTeX instructions",
+type="exercise",
+label="latexprompt",
+parents="{prompting}",
+nooftokens = 122
+]
+Exercise 1.2:
+
+Start your $\LaTeX$ journey using the prompt below.
+\begin{prompting}
+I am doing weekly exercises in mathematics at the college level. Please suggest a very simple template in
+LaTeX for hand in of these exercises. Also, show me how to typeset an equation in LaTeX.
+
+There seems to be a web interface to LaTeX called Overleaf. Please tell me how to access this so that I can
+enter a weekly exercise.
+\end{prompting}
+
+Come up with your own prompt for a question related to software.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on prompting for feedback",
+type="exercise",
+label="feedbackprompt",
+parents="{prompting}",
+nooftokens = 114
+]
+Exercise 1.3:
+
+Below I ask for feedback from the chatbot on some dubious chunk of mathematics.
+\begin{prompting}
+Please give feedback on the mathematics contained in the $\LaTeX$ below in triple quotes. Emphasize logic and precision.
+"""
+$$
+x^2 = 1 \implies x = 1
+$$
+From this it follows that $1 + 1 = 3$.
+"""
+\end{prompting}
+
+Insert your own mathematics in $\LaTeX$ notation and ask for feedback in a prompt.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="How to study",
+type="content",
+label="howtostudy",
+parents="{}",
+nooftokens = 360
+]
+Section 1.2: Black box warnings
+
+
+
+Modern mathematics is perhaps not like
+anything you have encountered so far. It calls for a lot of focus and precision, especially when
+writing down solutions to problems. It is a bit like programming a computer. There is no room for imprecision and half-baked sentences.
+
+This course amounts to $10$ ECTS or approximately $280$ hours. Suppose that you spend
+a week studying for the exam, say $40$ hours. Lectures, exercise classes, and MatLab amount to $14\cdot (4 + 2 + 3)$ hours $= 126$ hours. This leaves around $114$ hours for your own study and immersion. Put in
+other terms, you are supposed to work around $8$ hours per week outside classes for this course. With
+classes, each week calls for $17$ hours of work. There is a very close relationship between the amount
+of hours you log each week and your result at the exam. To state the obvious: numbers don't lie. If you
+put in the time, you will almost certainly do well. Try to allocate time for IMO in your weekly
+schedule and please (ab)use all the help that is provided.
+
+\begin{prompting}
+I am taking a first semester college level mathematics course spanning 14 weeks and 10 ECTS. One ECTS
+amounts to 28 hours. The teaching activities every week amount to 4 hours of lectures,
+2 hours of exercise sessions and 3 hours of study cafe. I expect that final exam will take 40 hours
+of the 10 ECTS. Please schedule a weekly study plan for me along with a plan for the final exam.
+\end{prompting}
+\end{rag}
+\begin{rag}[
+title="Exercise on correcting WolframAlpha error",
+type="exercise",
+label="wolframalpha",
+parents="{prompting}",
+nooftokens = 153
+]
+Exercise 1.4:
+
+Prompt a chatbot with
+\begin{prompting}
+What is 
+$$
+-\sqrt{\frac{1}{2} (1 - \sqrt{2} + \sqrt{3 - 2\sqrt{2}})}
+$$
+\end{prompting}
+
+and explain why the output from WolframAlpha is weird.
+Use prompting to make it explain the mathematics input notation.
+
+Finally use your own mental powers (and feedback from the
+chatbot) to explain what the proper output should have been.
+
+\begin{hint} 
+  $$ 
+  3 - 2 \sqrt{2} = (\sqrt{2} - 1)^2.  
+  $$
+\end{hint} 
+ 
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Introducing Sage and python for computer algebra",
+type="content",
+label="computeralgebra",
+parents="{}",
+nooftokens = 287
+]
+We will use the computer algebra system
+Sage: https://www.sagemath.org/ in exploring and experimenting
+with mathematics. This means that you will have to write small
+commands and code snippets.
+
+Sage is built on top of the very wide
+spread language
+python: https://en.wikipedia.org/wiki/Python_(programming_language)
+and you can in fact enter <footnote>Python code->One may also enter code in several other languages</footnote> in
+the Sage input windows in the interactive notes. First adjust the prompt below
+according to your needs and get feedback from an LLM.
+
+\begin{prompting}
+I am taking a mathematics course that uses the computer algebra system Sage.
+The course uses the browser, where I can enter and run small snippets of code in Sage and python.
+I have no/some/extensive prior programming experience.
+Give me a brief introduction to Sage and explain how it relates to python.
+Finish your reply with a small exercise I can do. 
+If no/some/extensive is present above in this prompt, remark this and only reply with
+Please select your programming experience.
+\end{prompting}
+
+Below is an example of a basic
+graphics command in Sage.  Push the Compute button to evaluate.
+
+
+
+You can install Sage on your own computer following the instructions on
+https://www.sagemath.org/: https://www.sagemath.org/.
+\end{rag}
+\begin{rag}[
+title="Exercise introducing Sage",
+type="exercise",
+label="sageexercise",
+parents="{computeralgebra}",
+nooftokens = 267
+]
+Exercise 1.5:
+
+Did you notice that you can edit and enter new commands in the Sage window?
+Do the following problems using Sage based on the Sage guided tour: http://doc.sagemath.org/html/en/tutorial/tour.html. 
+
+\begin{enumerate}\item (i) Consider $f(x) = x \sin(1/x)$. Plot the graph of $f$ from $0$ to $0.1$. Computing $f(0)$ does not make sense. Do you
+  see a way of assigning a natural value to $f(0)$ using the graph?
+\item (ii) Find an approximate solution with four decimals to the equation $\cos(x) = x$.
+
+\begin{hint}
+    This is an example of an equation, that can only be solved numerically.
+    Try first plotting the graph of $f(x) = x - \cos(x)$ from $0$ to $1$. Then use a
+    suitable function from the Sage guide.
+    \end{hint}
+\item (iii) Compute $\pi$ with $100$ decimals.
+\end{enumerate}
+
+\begin{prompting}
+Give me the sage code to compute pi with 100 decimals. I want a one line command.
+\end{prompting}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on rewriting sum",
+type="exercise",
+label="rewritingsum",
+parents="{}",
+nooftokens = 184
+]
+Exercise 1.6:
+
+Compute the sum
+$$
+\frac{1}{\sqrt{1} + \sqrt{2}} + \frac{1}{\sqrt{2} + \sqrt{3}} + \frac{1}{\sqrt{3} + \sqrt{4}}.
+$$
+
+What is the elegant answer? Explain!
+
+Bonus question:
+Generalize your answer/method to computing the sum
+$$
+\frac{1}{\sqrt{1} + \sqrt{2}} + \frac{1}{\sqrt{2} + \sqrt{3}} + \frac{1}{\sqrt{3} + \sqrt{4}} + \cdots + \frac{1}{\sqrt{N-1} + \sqrt{N}},
+$$
+for $N = 5, 6, 7, \dots$.
+  
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Definition of sets",
+type="content",
+label="setsdefinition",
+parents="{}",
+nooftokens = 224
+]
+A set is a collection of (mathematical) objects or elements. When defining a set we use the symbols $\{$
+and $\}$ to denote the beginning and end of its definition. For example, $\{\text{N, i, e, l, s}\}$
+is the set of characters in my first name and $\{8, 0\}$ are the digits in the postal code
+for Aarhus C. The ordering in the listing of the elements is unimportant so that
+$$\begin{aligned}
+\{\text{N, i, e, l, s}\} &= \{\text{l, e, i, s, N}\}\\
+\{8, 0\} &= \{0, 8\}
+\end{aligned}$$
+are identical sets. If $S$ is a set, we will use the notation $x\in S$ to denote
+that $x$ is an element in $S$. For example, e$\in \{\text{N, i, e, l, s}\}$.
+\end{rag}
+\begin{rag}[
+title="Natural numbers and integers",
+type="content",
+label="naturalnumbersandintegers",
+parents="{setsdefinition}",
+nooftokens = 541
+]
+Subsection 1.4.1: The natural numbers $\mathbb{N}$ and the integers $\mathbb{Z}$
+
+
+The set of natural numbers is
+$$
+\mathbb{N} = \{1, 2, 3, \dots\}.
+\tag{1.1}$$
+The set of integers is
+$$
+\mathbb{Z} = \{\dots, -3, -2, -1, 0, 1, 2, 3, \dots\}.
+\tag{1.2}$$
+These are *infinite* sets, since they contain infinitely many elements as indicated by the dots $\dots$
+
+It makes sense to add and multiply two integers $a$ and $b$. We will denote their
+addition or sum as $a + b$ and their multiplication or product as $a b$. A fundamental
+fact is that addition and multiplication are commutative i.e., $a + b = b + a$ and
+$a b = b a$.
+
+Please notice right away that expressions like $a + b + c$ and $a b c$ are complete nonsense for
+three integers $a, b$ and $c$. We only know how to add and multiply two integers, not three. A
+wonderful fact comes to our rescue:
+$$\begin{aligned}
+(a + b) + c &= a + (b + c)\\
+(a b) c &= a ( b c).
+\end{aligned}\tag{1.3}$$
+You get the same result no matter if you start adding (multiplying) $a$ and $b$ or $b$ and $c$ and
+then adding (multiplying) $c$ or $a$. So we may write $a + b + c$ and $a b c$ as a
+placeholder for one of the two ways of computing this expression in (1.3).
+
+As you can see we use the symbol $+$
+for addition, but
+no symbol for multiplication. This is the convention in (clean) mathematics as opposed to the $a * b$ coming from
+computer algebra (except perhaps in
+Mathematica: https://en.wikipedia.org/wiki/Wolfram_Mathematica or Wolfram language, where space is allowed for multiplication).
+However, when one of the factors is an actual number, we will use $\cdot$, so that
+for example $7$ times $9$ is written as $7\cdot 9$ and $a$ times $3$ is written
+$a\cdot 3$.
+\end{rag}
+\begin{rag}[
+title="Rational numbers",
+type="content",
+label="rationalnumbers",
+parents="{naturalnumbersandintegers}",
+nooftokens = 605
+]
+Subsection 1.4.2: The rational numbers $\mathbb{Q}$
+
+
+
+The natural numbers $\mathbb{N}$ and the integers $\mathbb{Z}$ are well defined
+by their representations in (1.1) and (1.2).
+
+
+Definition 1.7:
+
+A rational number $a/b\in \mathbb{Q}$ 
+consists of a numerator $a\in \mathbb{Z}$ and a denominator $b\in \mathbb{N}$.
+
+If $a, c\in \mathbb{Z}$ and $b, d\in \mathbb{N}$. Then $a/b$ and
+$c/d$ are considered equal i.e.,
+$$
+\frac{a}{b} = \frac{c}{d}
+$$
+if and only if $a d = b c$.
+
+/Definition
+
+
+Example 1.8:
+
+So there are many different ways of representing a rational number, such as
+$$
+\frac{3}{7} = \frac{6}{14} = \frac{9}{21}.
+$$
+Here
+$$
+\frac{3}{7} = \frac{9}{21}\qquad\text{since}\qquad 3\cdot 21 = 7\cdot 9.
+$$
+In fact, a fraction stays the same when its numerator and denominator are
+multiplied by the same natural number.
+
+/Example
+
+I will assume that you know how to add and multiply fractions,
+and that you do not make mistakes like
+$$
+\color{red}
+\frac{1}{2} + \frac{2}{3} = \frac{1+2}{2+3}=\frac{3}{5}.
+$$
+In fact, if you temporarily forgot how to add fractions, you can use the wisdom in
+Definition (1.7). You can replace $\frac{1}{2}$ by $\frac{3}{6}$ and
+$\frac{2}{3}$ by $\frac{4}{6}$ and then add the numerators as in
+$$
+\frac{1}{2} + \frac{2}{3} = \frac{3}{6} + \frac{4}{6} = \frac{3 + 4}{6} = \frac{7}{6}.
+$$
+The computation above says that it is straightforward to add pizza slices of the
+same size (one sixth), but that you need to think a bit when adding one half pizza slice and
+two pizza slices of size one third. In general,
+$$
+\frac{a}{b} + \frac{c}{d} = \frac{a d + b c}{b d}  \qquad\text{and}\qquad
+\frac{a}{b} \frac{c}{d} = \frac{a c}{b d}.
+$$
+\end{rag}
+\begin{rag}[
+title="Exercise on adding fractions",
+type="exercise",
+label="addingfractions",
+parents="{rationalnumbers}",
+nooftokens = 162
+]
+Quizexercise 1.9:
+
+  \begin{quiz}
+\question
+Click on the right equalities below. Do not use Sage (or any computer)!
+\answer{F}
+$$
+\frac{1}{5} + \frac{1}{7} = \frac{1}{35}
+$$
+\answer{T}
+$$
+\frac{3}{7} + \frac{4}{7} = 1
+$$
+\answer{T}
+$$
+\frac{2}{3} + \frac{3}{2} - 2 = \frac{1}{6}
+$$
+\answer{F}
+$$
+\frac{1}{3} + 2 = \frac{8}{3}.
+$$
+\end{quiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="Real numbers",
+type="content",
+label="realnumbers",
+parents="{naturalnumbersandintegers, rationalnumbers}",
+nooftokens = 749
+]
+Subsection 1.4.3: The real numbers $\mathbb{R}$
+
+
+
+
+Definition 1.10:
+
+A real number is defined by
+$$
+d_0.d_1 d_2 \dots,
+\tag{1.4}$$
+where $d_0\in \mathbb{Z}$ and $d_1, d_2, \dots$ is an infinite sequence of integers (digits) in $\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$.
+
+/Definition
+
+Informally
+(1.4) represents the real number
+$$
+d_0 + \frac{d_1}{10} + \frac{d_2}{100} + \cdots = d_0 + d_1 \cdot 10^{-1} + d_2 \cdot 10^{-2} + \cdots
+$$
+given by an infinite set of digits as opposed to a rational number, which is
+given finitely by an integer (numerator) and a natural number (denominator).
+The format in (1.4) is the usual (floating point) output from your pocket calculator or computer algebra system. For example,
+$$\begin{aligned}
+\frac{1}{3} &= 0.333\dots\\
+\frac{3}{7} &= 0.42857142857\dots\\
+\frac{3}{14} &= 0.21428571428571428571\dots\\
+\frac{22}{7}    &= 3.14285714285714285714285714\dots\\
+\frac{355}{113} &= 3.14159292035398230088495575\dots\\
+\pi             &= 3.14159265358979323846264338\dots
+\end{aligned}$$
+The decimal expansion of $355/113$ above looks chaotic, but it eventually repeats itself after $112$ digits. In fact the
+decimal expansion of every rational number is periodic: https://en.wikipedia.org/wiki/Repeating_decimal i.e., it repeats itself from a certain point.
+
+In the definition (1.4) of a real number, we are forced to make identifications as
+in the definition of a rational number. I will not go into details here, but just notice that the
+identification
+$$
+0.99999\dots = 1.000\dots
+$$
+is forced upon us: if
+$$
+x = 9\cdot 10^{-1} + 9\cdot 10^{-2} + \cdots.
+$$
+Then
+$$
+10 x = 9 + 9\cdot 10^{-1} + 9\cdot 10^{-2} + \cdots = 9 + x.
+$$
+Therefore we must have $x = 1$.
+
+A real number that is not rational is called irrational: https://en.wikipedia.org/wiki/Irrational_number. There are many more irrational numbers
+than rational ones. Famous ones are $\sqrt{2}, \pi$ and $e$. The
+irrational number $\sqrt{2}$ is a root in the polynomial $x^2-2$ with
+integer coefficients (it is an algebraic number: https://en.wikipedia.org/wiki/Algebraic_number). The numbers
+$e$ and $\pi$ are not even algebraic (they are transcendental: https://en.wikipedia.org/wiki/Transcendental_number).
+\end{rag}
+\begin{rag}[
+title="Exercise on prompting for history of numbers and periodicity of rational numbers",
+type="exercise",
+label="promptingnumberhistoryandperiodicity",
+parents="{realnumbers}",
+nooftokens = 35
+]
+Exercise 1.11:
+
+Explore using prompting the history of numbers in mathematics. Also make a chatbot
+explain why a rational number must have a periodic decimal expansion.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Arithmetic rules for numbers",
+type="content",
+label="arithmeticfornumbers",
+parents="{naturalnumbersandintegers, rationalnumbers, realnumbers}",
+nooftokens = 636
+]
+Subsection 1.4.4: Arithmetic rules for numbers
+
+
+
+  
+
+Proposition 1.12:
+
+Suppose that $A$ is one of the sets $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ or $\mathbb{R}$. Then for numbers
+$x, y, z$ all in $A$ we have
+\begin{enumerate}\item (i) $1\cdot x = x$
+\item (ii) $x y = y x$
+\item (iii) $x + y = y + x$
+\item (iv) $(x + y) + z = x + (y + z)$
+\item (v) $(x y) z = x (y z)$
+\item (vi) $x(y + z) = x y + x z$
+\end{enumerate}
+If $A$ is one of $\mathbb{Z}, \mathbb{Q}$ or $\mathbb{R}$, then $0\in A$ 
+and for every $x\in A$,  
+\begin{enumerate}\item (vii) $x + 0 = x$ 
+\item (viii) $x + y = 0$ for some number $y \in A$.
+\end{enumerate}  
+Finally if $A$ is $\mathbb{Q}$ or $\mathbb{R}$ and $x\in A$ is not $0$,then     
+\begin{enumerate}\item (ix) $x z = 1$ for some number $z\in A$.  
+\end{enumerate}   
+The number $z$ above is called the *inverse* of $x$ and is usually denoted $x^{-1}$.
+The number $y$ above is called the *negative* of $x$ and is usually denoted $-x$. We will also
+the symbol $-$ (minus) defined as an operation on two numbers $x, y\in A$ as
+$$
+x - y := x + (-y).
+$$
+
+
+/Proposition
+ 
+
+
+Exercise 1.13:
+
+Argue precisely that $-(x-y) = y-x$ for $x, y\in A$ using Proposition (1.12).
+
+/Exercise
+
+The long list of arithmetic rules above may seem complicated at first, but
+they are just a formal version of what you already know, such as for example, $\pi + 0 = \pi$, $2 + y = 0$
+if $y = -2$ and $3 z = 1$ for $z = \frac{1}{3} = 3^{-1}$. Beware however, that the precision
+in Proposition (1.12) is necessary when programming
+a computer.
+
+The rules ((iv.)) and ((v.)) are
+called the *associative* laws for addition and multiplication respectively.
+The rule ((vi.)) is called the *distributive* law.
+It connects multiplication with addition.
+\end{rag}
+\begin{rag}[
+title="Exercise on adding 0",
+type="exercise",
+label="adding0",
+parents="{arithmeticfornumbers}",
+nooftokens = 44
+]
+Exercise 1.14:
+
+We know that zero times any number is zero. Deduce this from the rules in
+Proposition (1.12) starting with $0 + 0 = 0$.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on distributive law and space for multiplication",
+type="exercise",
+label="distributivelaw",
+parents="{arithmeticfornumbers}",
+nooftokens = 52
+]
+Exercise 1.15:
+
+Verify that ((vi.)) is true for some specific non-zero numbers. Also
+convince yourself that WolframAlpha: https://wolframalpha.com actually
+accepts space (between numbers and variables) as multiplication.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on using distributive law for optimzing number of multiplications",
+type="exercise",
+label="distributivelawoptimizemultiplication",
+parents="{arithmeticfornumbers}",
+nooftokens = 80
+]
+Exercise 1.16:
+
+Suppose that $x, y, z\in \mathbb{Q}$ and $w = x y + x z$. It seems
+that computing $w$ involves two multiplications and one addition. Multiplications are
+expensive operations on a computer. Is there a way of computing
+$w$ with only one multiplication and one addition?
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Distributive law to move factor out",
+type="exercise",
+label="distributivelawmoveout",
+parents="{arithmeticfornumbers}",
+nooftokens = 47
+]
+Exercise 1.17:
+
+Suppose that $n\in \mathbb{N}$. Use the distributive law to show that
+$$
+n^2 + n = n(n+1). 
+$$
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Proposition logic",
+type="content",
+label="propositional logic",
+parents="{}",
+nooftokens = 787
+]
+Section 1.5: Propositional logic
+
+
+
+A proposition is a (mathematical) statement that is
+true ($t$) or false ($f$). This could be a boolean
+expression in a computer program, like $1 < 2$.
+
+Sage:
+
+
+
+Later we will see propositions with
+variables in them like $x < 2$. These are called predicates.
+
+Propositions can be combined into
+new (compound) propositions. Take for example the propositions
+
+$$\begin{aligned}
+&p: \text{it rains}\\
+&q: \text{it is cloudy}.
+\end{aligned}$$
+
+Then ($p$ and $q$) is a perfectly good
+  new proposition reading *it rains and it is cloudy*. The same goes for (if $p$ then $q$), which reads
+  *if it rains then it is cloudy*. The proposition (if $q$ then $p$) reads *if it is cloudy then
+    it rains*. This proposition is (clearly) false.
+
+We need some notation to describe these compound propositions:
+
+$$
+\begin{array}{ll}
+p \land q\qquad\qquad & \qquad\qquad p \text{ and } q\\
+\\
+p \lor q\qquad\qquad & \qquad\qquad p \text{ or } q\\
+\\
+p\implies q\qquad\qquad & \qquad\qquad \text{if } p \text{ then } q\\
+\\
+\neg p\qquad\qquad & \qquad\qquad \text{not } p
+\end{array}
+$$
+
+The compound propositions are either true($t$) or false ($f$) depending on
+$p$ and $q$. The dependencies are displayed in the *truth tables* below.
+
+
+Definition 1.18:
+
+$$
+\def\arraystretch{1.2}
+      \begin{array}{c|c|c}
+        p & q  & p\land q  \\
+        \hline 
+        t & t  & t    \\
+        t & f & f\\
+        f & t & f\\
+        f & f & f
+      \end{array}\qquad
+      \begin{array}{c|c|c}
+        p & q  & p\lor q  \\
+        \hline
+        t & t  & t    \\
+        t & f & t\\
+        f & t & t\\
+        f & f & f
+      \end{array}
+      \qquad
+      \begin{array}{c|c|c}
+        p & q  & p\implies q  \\
+        \hline
+        t & t  & t    \\
+        t & f & f\\
+        f & t & t\\
+        f & f & t
+      \end{array}\qquad
+      \begin{array}{c|c}
+        p & \neg p \\
+        \hline
+        t & f\\
+        f & t
+      \end{array}
+  $$
+
+/Definition
+
+The tables for the compound propositions $p\land q, p\lor q$ and also
+$\neg p$ are not too hard to grasp. The table for $p\implies q$ 
+raises a few more questions. Why is $f\implies t$ true?
+I will not go into this at this point (see Example {?}example:forallimplies{/?}), but just point out that there are
+many explanations available online and, 
+perhaps more importantly, refer you to Exercise {?}excolorcards{/?}.
+\end{rag}
+\begin{rag}[
+title="Exercises on propostional logic",
+type="exercise",
+label="exercisespropositionallogic",
+parents="{propositionallogic}",
+nooftokens = 312
+]
+Exercise 1.19:
+
+Suppose that we are presented with four cards
+$$
+\boxed{3}\qquad \fcolorbox{black}{red}{\phantom{3}}
+\qquad\boxed{4}\qquad \fcolorbox{black}{blue}{\phantom{4}}
+\tag{1.5}$$
+with a (natural) number on the front and the color
+blue or red on the back.
+In (1.5), the first and third cards are shown with their fronts facing up and
+the second and fourth cards are shown with their backs facing up.
+
+A claim (proposition) is made that if a card has an even number on the front, then it
+must have the color blue on the back.
+
+Your task is to verify this for the cards above. Of course you can
+do this by turning all four cards, but is there a way of checking this
+by turning less than four cards?
+
+What if we add the claim, that if a card has the color 
+blue on the back, then
+it must have an even number on the front?
+
+\begin{hint}
+  Find two propositions $p$ and $q$ so that the claim reads
+  $p\implies q$.
+\end{hint}
+
+
+/Exercise
+
+
+Exercise 1.20:
+
+A prosecutor says to the defendant: "If you committed this crime you did not act alone".
+Explain why the defendant should not answer "no, that is not true" here.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercise on python behavior for logic",
+type="exercise",
+label="logicpythonbehavior",
+parents="{computeralgebra}",
+nooftokens = 58
+]
+Exercise 1.21:
+
+Explain why Python/Sage thinks that <footnote>the value->Thanks to Gerth Brodal for pointing this out to me</footnote> of
+
+
+
+is False! Notice that you are dividing one by zero in the last "integer" above.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="",
+type="content",
+label="propositionallanguageasaformallanguage",
+parents="{propositionallogic}",
+nooftokens = 549
+]
+Subsection 1.5.1: Propositional logic as a formal language
+
+
+
+The entities $p$ and $q$ above may have
+real world interpretations like *it rains* or *it is cloudy*, but we will view them
+as variables that can be assigned the values true or false. Independent of this
+assignment we define a proposition as follows.
+
+
+Definition 1.22:
+
+A proposition in the variables $x_1, \dots, x_r$ is an expression involving
+the symbols $x_1, \dots, x_r, (, ), \neg, \land, \lor, \implies$ that
+can be generated using the rules below
+\begin{enumerate}\item (i) The variables $x_1, \dots, x_r$ are (atomic) propositions.
+\item (ii) If $P$ is a proposition, then $(\neg P)$ is a proposition.
+\item (iii) If $P$ and $Q$ are propositions, then $(P \land Q)$, $(P \lor Q)$ and $(P \implies Q)$ are propositions.
+\end{enumerate}
+
+/Definition
+
+
+Example 1.23:
+
+The expression $(x_1 \implies ((\neg x_2) \lor x_3))$ is a proposition. Let us see how it is generated
+using the rules in Definition (1.22).
+
+\begin{enumerate}\item (1)
+First, $x_2$ is a proposition using ((i.)).
+\item (2)
+Then $(\neg x_2)$ is a proposition by using ((ii.)) with $P = x_2$, since we know by ((1.)) that
+$P$ is a proposition.
+\item (3)
+Since $x_3$ is a proposition by ((i.)), it follows
+that $((\neg x_2) \lor x_3)$ is a proposition using ((iii.)) with $P = (\neg x_2)$ and $Q = x_3$, since
+we know by ((2.)) that $P$ is a proposition.
+\item (4)
+Finally, since $x_1$ is a proposition by ((i.)) it follows by ((iii.)) with 
+$P = x_1$ and $Q = ((\neg x_2)\lor x_3)$ that
+$$
+(x_1 \implies ((\neg x_2) \lor x_3))
+$$
+is a proposition, since we know by ((3.)) that $Q$ is a proposition.
+\end{enumerate}
+
+/Example
+\end{rag}
+\begin{rag}[
+title="Exercise on propositional logic as a formal language",
+type="exercise",
+label="formallogicquizexercise",
+parents="{propositionallogicasaformallanguage}",
+nooftokens = 160
+]
+Quizexercise 1.24:
+
+\begin{quiz}
+\question
+According the generating rules in Definition (1.22), which of the
+following expressions are propositions in the variables $x_1, x_2, x_3$.
+\answer{F}
+$(x_1)$
+\answer{F}
+$x_1 \implies x_2$
+\answer{T}
+$(x_1 \implies x_2)$
+\answer{T}
+$x_1 \land (x_2 \lor x_3)$
+\answer{F}
+$\neg x_1 \implies x_2$
+\answer{T}
+$((\neg x_1) \implies x_2)$
+\end{quiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="",
+type="content",
+label="truthtables",
+parents="{propositionallogic, computeralgebra}",
+nooftokens = 950
+]
+Subsection 1.5.2: Truth tables and equivalent propositions
+
+
+
+Given a proposition, it makes sense to substitute values ($t$ or $f$) for the variables
+and evaluate it using the rules in Definition (1.18), since the
+parentheses leave no ambiguity as to how the evaluation must take place. For a given proposition in the
+variables $x_1, \dots, x_r$, there are $2^r$ ways of assignments to the set of variables.
+Each of these assignments results in the value true or false after evaluation. This
+is conveniently recorded in the *truth table* of the proposition as illustrated in the example
+below, where $r = 3$ so that the truth table has $2^3 = 8$ rows.
+
+
+Example 1.25:
+
+The truth tables corresponding to the propositions $(x_1 \land (x_2 \lor x_3))$ and
+$((x_1\land x_2) \lor (x_1\land x_3))$ are given below.
+$$
+\def\arraystretch{1.2}
+      \begin{array}{c|c|c|c}
+        x_1 & x_2  & x_3 & (x_1 \land (x_2 \lor x_3))  \\
+        \hline
+        f & f  & f & f    \\ 
+        f & f  & t & f   \\
+        f & t  & f & f   \\
+        f & t  & t & f   \\
+        t & f  & f & f   \\
+        t & f  & t & t   \\
+        t & t  & f & t   \\
+        t & t  & t & t
+      \end{array}\qquad\qquad
+      \begin{array}{c|c|c|c}
+        x_1 & x_2  & x_3 & ((x_1\land x_2) \lor (x_1\land x_3))  \\
+        \hline
+        f & f  & f & f    \\ 
+        f & f  & t & f   \\
+        f & t  & f & f   \\
+        f & t  & t & f   \\
+        t & f  & f & f   \\
+        t & f  & t & t   \\
+        t & t  & f & t   \\
+        t & t  & t & t
+      \end{array} 
+$$
+For example, if $x_1 = t, x_2 = f$ and $x_3 = t$, then
+$$
+(x_1 \land (x_2 \lor x_3)) = (t \land (f \lor t)) = (t \land t) = t
+$$
+and
+$$
+((x_1\land x_2) \lor (x_1\land x_3)) = ((t \land f) \lor (t \land t)) = (f \lor t) = t.
+$$
+
+/Example
+
+The two propositions in Example (1.25) have identical truth tables. In general,
+if two propositions $P$ and $Q$ have identical truth tables we call them *equivalent* and write
+$$
+P \equiv Q.
+$$
+In Example (1.25) we saw that
+$$
+(x_1 \land (x_2 \lor x_3)) \equiv ((x_1\land x_2) \lor (x_1\land x_3)).
+$$
+
+The definition below is very important too keep in mind.
+
+
+Definition 1.26:
+
+The notation $p \iff q$ is used frequently. It means that both
+$p\implies q$ and $q\implies p$ are true i.e.,
+$$
+p \iff q \equiv (p\implies q) \land (q\implies p).
+$$
+
+/Definition
+
+Subsection 1.5.3: Using Sage to compute truth tables
+
+
+
+Sage may be used to compute truth tables for propositions using the
+propositional calculus: https://doc.sagemath.org/html/en/reference/logic/sage/logic/propcalc.html in Sage. Below is an example. Be sure to check
+how to enter $\land, \lor, \implies$ and $\neg$.
+\end{rag}
+\begin{rag}[
+title="Exercises on truth tables",
+type="exercise",
+label="exercisesontruthtables",
+parents="{propositionallogic, truthtables}",
+nooftokens = 198
+]
+Exercise 1.27:
+
+Construct by hand the truth table for the proposition
+$(p\land q) \lor (\neg r)$.
+
+/Exercise
+
+
+Exercise 1.28:
+
+Convince yourself either using Sage or by writing out truth tables that
+\begin{enumerate}\item (i)
+$(x_1 \implies x_2) \equiv ((\neg x_2)\implies (\neg x_1))$
+\item (ii)
+$(\neg (x_1 \lor x_2)) \equiv ((\neg x_1) \land (\neg x_2))$
+\item (iii)
+$\neg (x_1 \land x_2) \equiv (\neg x_1) \lor (\neg x_2)$
+\item (iv)
+$x_1 \implies x_2 \equiv (\neg x_1)\lor x_2$
+\end{enumerate}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Predicates with variables and quantification",
+type="content",
+label="variablesandpredicates",
+parents="{propositionallogic}",
+nooftokens = 788
+]
+Subsection 1.5.4: Variables, predicates and quantification
+
+
+
+
+
+Definition 1.29:
+
+A predicate is a proposition depending on one or more variables.
+
+/Definition
+
+
+Variables are fundamental in computer programs.
+In the predicate $x = 1$, $x$ appears as a variable.
+Depending on what you substitute
+for $x$, the resulting proposition could be true or false or
+even meaningless. As an example, the latter case appears if $x$
+is replaced by the character 'a'.
+This is what computer scientists call a type error. You cannot
+compare a character with a digit.
+
+
+Example 1.30:
+
+If $p(n) = n\ \text{is a prime number}$, then $p(3)$ is true, whereas $p(6)$ is false.
+$$
+q(m, n) = p(m) \land (\neg p(n))
+$$
+is a predicate in two variables $m$ and $n$. Here $q(3, 4)$ is true, whereas $q(5, 7)$ is false.
+
+/Example
+
+Subsection: For every $\forall$ and there exists $\exists$
+
+
+
+Suppose that we have a predicate $p(x)$, such that $p(x)$ is a proposition for $x\in S$, where
+$S$ is some set. Then we define the proposition
+$$
+\exists x\in S: p(x)
+\tag{1.6}$$
+to be true if there exists $x\in S$, such that $p(x)$ is true. We let
+$$
+\forall x\in S: p(x) 
+\tag{1.7}$$
+be the proposition defined by
+$$
+\neg (\exists x\in S: \neg p(x)).
+$$
+In other words, (1.7) says that $p(x)$ is true for every $x\in S$, since
+there does not exist $x\in S$ making $p(x)$ false. Le me be absolutely clear.
+To show that $\forall x\in S: p(x)$ is false, it is enough to find just a single $x\in S$ so that
+$p(x)$ is false.
+
+
+Example 1.31:
+
+    Here is a statement about real numbers
+    $$
+    x > 0 \qquad \implies \qquad x^2 > 0.
+    \tag{1.8}$$
+    This statement reads: no matter which real number $x$ you pick, if $x > 0$,
+    then $x^2 > 0$. We definitely want this to be true. Being true means
+    that (1.8) must hold for all numbers $x$, also $x = -7$,
+    which reads
+    $$
+    - 7 > 0 \qquad \implies \qquad (-7)^2 = 49 > 0.
+    $$
+    The above statement is an example of a false implies true statement, which
+    we want to be true: even though $-7$ is negative, its square is positive.
+
+In general terms, in proving the statement that $p(x) \implies q(x)$ holds for every $x$ in
+    some set $S$, we are really only interested in $x\in S$ for which $p(x)$ is true, since
+    $p(x)$ is our assumption. We still need $p(x)\implies q(x)$ to be true for $x\in S$ for
+    which $p(x)$ is false. This is assured by the truth table for $\implies$, since 
+    $f \implies t$ and $f\implies f$ are both true.
+  
+/Example
+\end{rag}
+\begin{rag}[
+title="Datalogi test",
+type="exercise",
+label="datquantification",
+parents="{variablesandpredicates}",
+nooftokens = 109
+]
+Quizexercise 1.32:
+
+\begin{quiz}
+\question
+Which of the following are true?
+\answer{F}
+$\forall x\in \mathbb{N}: x > 2$
+\answer{T}
+$\exists x\in \mathbb{N}: x > 2$
+\answer{T}
+$\forall x\in \emptyset: x = 7$
+\answer{F}
+$\exists x\in \emptyset: x = 7$
+\end{quiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="Proofs and inference, structure of proofs",
+type="content",
+label="proofsandinference",
+parents="{variablesandpredicates}",
+nooftokens = 548
+]
+Subsection 1.5.5: Proofs and inference rules
+
+
+
+A proof begins with an assumption $P$ and proceeds with a sequence
+of logical steps called inference rules leading to a conclusion $Q$.
+
+You
+have been taught how to solve equations in steps leading to a solution.
+Each step turns out to be an inference rule and the conclusion is
+the solution. Let us see how for the simple equation $x + 1 = 2$. Formally
+we want to prove
+$$
+\forall x\in \mathbb{R}: x + 1 = 2 \implies x = 1.
+$$
+The first inference rule is $a = b \implies a + c = b + c$ i.e., we
+are allowed to add the same number to both sides of an equality. This implies
+$$
+x + 1 = 2 \implies (x+1)-1 = 2 - 1 = 1.
+$$
+To be very precise we now use Proposition (1.12) ((iv.)) as an inference rule i.e.,
+$$
+(x + 1) - 1 = 1 \implies x + (1 - 1) = 1.
+$$
+Then we use Proposition (1.12)((viii.)) to conclude
+$$
+x + (1 - 1) = 1 \implies x + 0 = 1
+$$
+and then finally, we get by Proposition (1.12)((vii.)) that
+$$
+x + 0 = 1 \implies x = 1.
+$$
+So to solve the equation $x + 1 = 2$, we are actually using four (!) inference rules along the way.
+
+Subsection 1.5.6: The use of implication ($\implies$) and bi-implication ($\iff$)
+
+
+
+As you have seen, $\implies$ and $\iff$ are applied to link propositions in a logical argument.  For example,
+$$
+x + 1 = 2 \iff x = 1\qquad\text{or}\qquad \forall x\in \mathbb{Z}: x + 1 = 2 \iff x = 1.
+$$
+However, for $x \geq 0 \implies x^2 \geq 0$ we cannot link the two propositions by $\iff$,
+simply because $\forall x\in \mathbb{Z}; x^2 \geq 0 \implies x \geq 0$ is false (for $x= -1$).
+\end{rag}
+\begin{rag}[
+title="Exercises on inference and implications in proofs",
+type="exercise",
+label="inferenceineq",
+parents="{proofsandinference}",
+nooftokens = 164
+]
+Exercise 1.33:
+
+Prove that
+$$
+(x < y) \land ((y+3) < (z+10)) \implies (x+37) < (z+44).
+$$
+Write out every inference rule!
+
+/Exercise
+
+
+Exercise 1.34:
+
+Try out
+\begin{prompting}
+Is 
+$$
+x \geq 0 \iff x^2 \geq 0
+$$
+a true statement? Give me 3 carefully crafted exercises
+training me in distuishing $\implies$ and $\iff$.
+Only use basic mathematics involving
+numbers and arithmetic operations.
+After each exercise stop, ask for the
+answer and give valueable feedback and guidance.
+\end{prompting}
+and go through the exercises given to you.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="More on mathematical proofs",
+type="content",
+label="moreonmathematicalproofs",
+parents="{proofsandinference}",
+nooftokens = 1025
+]
+Subsection 1.5.7: More on mathematical proofs
+
+
+
+Most professional mathematicians rarely think about the precise
+definition of a proof and would probably feel
+uncomfortable defining a proof precisely.
+During many years of training they have
+assimilated knowledge by experience. Therefore many proofs
+seem born out of witchcraft containing several magical
+devices.
+
+However, many proofs: https://en.wikipedia.org/wiki/List_of_incomplete_or_incorrect_mathematical_proofs appearing in
+respected mathematical journals, submitted by respected mathematicians, have turned out to contain
+errors. Recent developments in automated proof systems
+like Coq: https://en.wikipedia.org/wiki/Coq and LEAN: https://en.wikipedia.org/wiki/Lean_(proof_assistant) show
+promise in checking proofs like for example the famous
+four color theorem: https://en.wikipedia.org/wiki/Four_color_theorem. These automated proof systems
+build on dependent type theory: https://en.wikipedia.org/wiki/Dependent_type, which we will not go into.
+
+Informally a proof of a proposition $q$, consists in arguing that an implication $p\implies q$ is true by first assuming $p$. Usually this is done
+not only through one implication $p\implies q$, but through a series
+of intermediate implications
+$$
+p\implies q_1 \implies q_2 \implies q_3 \implies \cdots \implies q_N,
+$$
+where the last proposition $q_N$ is $q$. If $p$ is true, this
+will constitute a proof that $q_N = q$ is true. Just like in {?}ordwrong{/?},
+there is an imprecision here. Can you tell what it is?
+
+
+Example 1.35:
+
+An integer is called even if it is divisible by $2$. So the even integers are
+$$
+\{\dots, -4, -2, 0, 2, 4, \dots\}.
+$$
+An integer is called odd if it is not even. So the odd integers are
+$$
+\{\dots, -5, -3, -1, 1, 3, \dots\}.
+$$
+Consider the 
+proposition:
+$$
+\forall n\in \mathbb{Z}: p(n)\implies p(n^2),
+\tag{1.9}$$
+where $p(n) = (n\text{ is odd})$ i.e., the square of an odd
+integer is odd. This seems true for a first selection
+of examples: $3^2=9, 5^2=25, \dots$.
+
+What does it mean
+exactly for a number to be odd? This means that it is
+not divisible by $2$ or that there exists another
+integer $a$, such that $n = 2 a + 1$. So
+$$
+p(n) = \exists a\in \mathbb{Z}: n = 2 a + 1.
+$$
+Therefore we need to show that
+$$
+\left(\exists a\in \mathbb{Z}: n = 2 a + 1\right) \implies
+\left(\exists b\in \mathbb{Z}: n^2 = 2 b + 1\right).
+$$
+Notice that I had to change $a$ into $b$ in the second proposition above.
+The two variables are not the same: $a$ is associated with $n$ and
+$b$ is associated with $n^2$.
+
+Let us assume that $n = 2 a + 1$. Now we need to argue that $n^2 = 2 b + 1$ for some $b\in \mathbb{Z}$. You stare at this for a while
+and notice that we should use the assumption $n=2 a + 1$ in
+computing $n^2$:
+$$
+n^2 = (2 a + 1)^2 = (2 a)^2 + 2 (2 a) + 1^2 = 4 a^2 + 4 a + 1 =
+2(2 a^2 + 2 a) + 1.
+$$
+Thus, using our assumption we may conclude that if $n = 2 a + 1$, then
+$$
+n^2 = 2 b + 1,
+$$
+where $b=2a^2+ 2 a$. This completes the proof.
+
+/Example
+
+The beauty here is that we have verified for all odd natural numbers
+that their square is odd. Not just a finite selection like
+$3, 7, 11, 13$.
+
+In
+many ways a proof is like a detailed argument in a court case, except
+that the rules of mathematics are universal. You need the absolute truth
+in the court of mathematics (or science).
+\end{rag}
+\begin{rag}[
+title="Exercise on mathematical proofs",
+type="exercise",
+label="exerciseonmathematicalproofs",
+parents="{moreonmathematicalproofs}",
+nooftokens = 89
+]
+Exercise 1.36:
+
+Consider the proposition $q(n) = n \text{ is even}$. Prove that
+$$
+\forall n\in \mathbb{Z}: q(n^2)\implies q(n).
+$$
+
+\begin{hint}
+Use that $q(n) = \neg p(n)$, where $p(n)$ is defined in Example (1.35).
+\end{hint}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="",
+type="content",
+label="proofbycontradiction",
+parents="{moreonmathematicalproofs}",
+nooftokens = 1100
+]
+Subsection 1.5.8: Proof by contradiction
+
+
+
+A proposition $p$ is either true or false. This seemingly obvious statement
+goes by the name of the law of excluded middle: https://en.wikipedia.org/wiki/Law_of_excluded_middle and dates back to the writings
+of Aristotle: https://en.wikipedia.org/wiki/Aristotle. The law of excluded middle is key in the example below,
+where you are left with the feeling that you have been deprived of a fair and genuine proof.
+
+
+Example 1.37:
+
+  An irrational number is a (real) number that is not rational. It is a
+  startling fact that such numbers exist, but they do! The square root $\sqrt{2}$ of two: https://en.wikipedia.org/wiki/Square_root_of_2
+  is an example. 
+  We will prove that there exists two irrational numbers $\alpha, \beta$, such that
+$\alpha^\beta$ is rational.
+
+Consider the proposition $p$ given
+  by
+  $$
+  \gamma = \sqrt{2}^{\sqrt{2}}\text{is rational.}   $$
+  Either $p$ is true or false. If $p$ is true we are done putting $\alpha = \beta = \sqrt{2}$. If not, then
+  $p$ must be false and $\gamma$ is irrational. But then
+  $$
+  \gamma^{\sqrt{2}} = \left(\sqrt{2}^{\sqrt{2}}\right)^{\sqrt{2}} = (\sqrt{2})^{\sqrt{2}\cdot \sqrt{2}} = \sqrt{2}^2 = 2
+  $$
+  and we are done putting $\alpha = \gamma$ and $\beta = \sqrt{2}$.
+
+So which one is it? Is
+$$
+\sqrt{2}^{\sqrt{2}}
+$$
+rational or irrational? 
+  This is really advanced mathematics based on the 
+  Gelfond-Schneider theorem: https://en.wikipedia.org/wiki/Gelfond%E2%80%93Schneider_theorem.
+
+/Example
+
+The law of excluded middle can be turned
+into a powerful proof technique called *proof by contradiction*.
+
+Suppose we wish to establish that $p$ is true. Then we turn things upside down by
+assuming that $p$ is false i.e., that $\neg p$ is true. If we then
+by logical deduction can show that
+$$
+\neg p \implies q,
+$$
+for some proposition $q$, which is demonstrably false, then $\neg p$ cannot be true (since
+true $\implies$ false is false). Therefore $\neg p$
+must be false and $p$ must be true by the law of the excluded middle. This technique is used all the time!
+
+
+Example 1.38:
+
+Let us use proof by contradiction to show that the proposition $p:$ ($\sqrt{2}$ is an irrational number) is true.
+Assuming that $p$ is false, we must have that $\neg p$ is true. But
+$\neg p$ is the proposition $p_1$ (that $\sqrt{2}$ is a rational number)
+$$
+\exists m, n\in \mathbb{N}: \sqrt{2} = \frac{m}{n}.
+$$
+Here $p_1 \iff p_2$, where $p_2$ is the proposition
+$$
+\exists m, n\in \mathbb{N}: \left(\sqrt{2} = \frac{m}{n}\right) \land ((m \text{ is odd}) \lor (n \text{ is odd})),
+$$
+since we can assume that $2$ is not a common divisor of $m$ and $n$ by
+Definition (1.7).
+However,
+$$
+\sqrt{2} = \frac{m}{n} \iff \sqrt{2} n = m \iff 2 n^2 = m^2 \implies m\text{ is even}.
+$$
+The last implication above follows from Exercise (1.36). If $m$ is even, then
+$m = 2 k$ for some $k\in \mathbb{N}$. Therefore $m^2 = 4 k^2$ and
+$$
+2 n^2 = 4 k^2 \iff n^2 = 2 k^2
+$$
+so that $n$ is also even. We have proved that $p_2$ implies the proposition $p_3$ given by
+$$
+(m \text{ is even}) \land (n \text{ is even}).
+$$
+Since we are assuming that $p_2$ is true, we must have that $p_3$ is false. However we have
+shown that $p_2\implies p_3$ is true. But $t\implies f$ is a  false. Therefore
+we must have that $p_2$ is false and therefore that $p_1$ is false. But then
+according to the law of the excluded middle, we must have that $p = \neg p_1$ is true.
+
+/Example
+\end{rag}
+\begin{rag}[
+title="Exercise on infinitude of the prime numbers",
+type="exercise",
+label="infinitudeprimenumbers",
+parents="{proofbycontradiction}",
+nooftokens = 299
+]
+Exercise 1.39:
+
+Consider the first $n$ prime numbers
+$$
+p_1 = 2, p_2 = 3, p_3 = 5, \dots, p_n.
+$$
+Check that
+$$\begin{aligned}
+  &p_1\\
+  &p_1\, p_2 + 1\\
+  &p_1\, p_2\, p_3 + 1\\
+  &p_1\, p_2\, p_3\, p_4 + 1
+\end{aligned}$$
+are prime numbers by using the Sage window below (factor gives
+the prime factorization of a natural number).
+
+
+
+Is it true in general that
+$$
+p_1\, p_2\, \cdots \, p_n + 1
+$$
+is a prime number?
+
+Assume that we know that every natural number must be divisible by a prime number.
+Prove that there are infinitely many prime numbers using proof
+by contradiction.
+
+\begin{hint}
+Show how the
+assumption that there are only finitely many prime numbers say
+$$
+p_1, p_2, \dots, p_n
+$$
+leads to a contradiction by using that the natural number
+$$
+p_1\, p_2\, \dots\, p_n + 1
+$$
+must be divisible by a prime number.
+\end{hint}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="More on sets, operations on sets and so forth",
+type="content",
+label="moreonsets",
+parents="{}",
+nooftokens = 1471
+]
+Section 1.6: More on sets
+
+
+
+Propositions are important, but are confined by the binary values
+of true and false. We would like to work mathematically with 
+objects like integers, floating point numbers, neural networks,
+computer programs and so on.
+
+Subsection 1.6.1: Objects and equality
+
+
+
+One of the cornerstones of modern mathematics is
+deciding when two objects are the same i.e.,
+given two objects $A$ and $B$, deciding whether
+the proposition $A=B$ is true of false. Oftentimes
+an algorithm for evaluating $A=B$ is needed.
+
+You may laugh here, but this is
+not always that easy. Even though objects appear different they are the same as
+in, for example the propositions
+$$
+\frac{105}{189} = \frac{35}{63}\qquad\text{and}\qquad \sin\left(\frac{\pi}{2}\right) = 1.
+$$
+The first proposition above is an identity of fractions (rational numbers). The second is
+an identity, which calls for knowledge of the sine function and real numbers. Each of these
+identities calls for some rather advanced mathematics. The first proposition is true in
+a very precise way, since $105\cdot 63 = 189 \cdot 35$.
+
+
+Exercise 1.40:
+
+
+
+
+Use the Sage window above to reason 
+about equality in the quiz below. In each case describe the objects i.e.,
+are they numbers, symbols, etc.? Also, please check your computations
+by hand with the old fashioned paper and pencil, especially $(a+b)(a-b)$.
+
+\begin{quiz}
+\question
+Click on the right equalities below.
+\answer{T}
+$$a + b - 2 b = a - b$$
+\answer{F}
+$$(a+b)^2 = a^2 + b^2$$
+\answer{T}
+$$(a + b)(a - b) = a^2 - b^2$$
+\answer{T}
+$$(a + b)^2 = a^2 + 2 a b +  b^2$$
+\answer{F}
+$$(a+b)^3 = a^3 + 2 a^2 b + 2 a b^2 + b^3$$
+\answer{F}
+$$\frac{3}{8} = \frac{5}{13}$$ 
+\answer{F}
+$$
+\pi = \frac{22}{7}
+$$
+\answer{T}
+$$
+\cos^2(\pi) + \sin^2(\pi) = 1
+$$
+\end{quiz}
+
+/Exercise
+
+
+Exercise 1.41:
+
+You know that $(a+ b)^2 = a^2 + 2 a b + b^2$. Use Sage to find a similar identities
+for $(a + b)^3$ and $(a + b)^4$.
+
+\begin{hint}
+  Go back and look at (the beginning of) Exercise (1.40).
+\end{hint}
+
+/Exercise
+
+For two objects $A$ and $B$ we will use the notation $A \neq B$ for the proposition $\neg (A = B)$.
+
+We have already defined a set (informally) as a collection of distinct objects or *elements*.
+We introduce some more set theory here.
+A set
+is also an object as described in section (1.6.1) and it makes sense to
+ask when two sets are equal.
+
+
+Definition 1.42:
+
+Two sets $A$ and $B$ are equal i.e., $A = B$ if they contain the same elements.
+
+/Definition
+
+An example of a set could be 
+the set $\{1,2,3\}$ of natural numbers between $0$ and $4$. Notice again that we use the symbol
+"$\{$" to start the listing of elements in a set and the symbol "$\}$" to denote the end of the listing.
+Notice also that (by our definition of equality between sets), the order of the elements in the listing does not matter i.e.,
+$$
+\{1, 2, 3\} = \{2, 3, 1\}.
+$$
+We are also not allowing duplicates like for
+example in the listing $\{1, 2, 2, 3, 3, 3\}$ (such a thing is called a multiset: https://en.m.wikipedia.org/wiki/Multiset).
+
+An example of a set not involving numbers could be the set of letters 
+$$
+S=\{A, n, e, x, a, m, p, l, c, o, u, d, b, t, h, s, r, i\}
+$$ 
+used in this sentence. The number of elements in a set $S$ is called the *cardinality* of the set.
+We will denote it by $|S|$.
+
+To convince someone beyond a doubt (we will talk about this formally later in this chapter) that two sets $A$ and $B$ are equal, one needs to argue that if $x$ is an element of $A$, then $x$ is an element of $B$ and the other way round, if $y$ is an element of $B$, then $y$ is an element of $A$. If this is true, then
+$A$ and $B$ must contain the same elements.
+
+
+Exercise 1.43:
+
+Give a precise reason as to why the two sets $\{1, 2, 3\}$ and $\{1, 2, 4\}$ are not equal.
+Is it possible for a set with $5$ elements to be equal to a set with $7$ elements?
+
+/Exercise  
+
+Sets may be explored using (only) python. This is illustrated in the snippet below. 
+
+<a href="#a1ba78ff-bab9-4dc2-b351-7bce41899013" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=a1ba78ff-bab9-4dc2-b351-7bce41899013 class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
+X = {1, 2, 3}
+Y = {2, 3, 1}
+print("X=Y is ", X==Y)
+
+S = {'A','n','e','x','a','m','p','l','c','o','u','d','b','t','h','s','r','i'}
+print("S = ", S) 
+print("The number of elements in S is |S|=", len(S))
+</script></div></div>
+
+
+
+Exercise 1.44:
+
+Come up with three lines of Sage code that verifies $\{1, 2, 3\} \neq \{1, 2, 4\}$. Try it out.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="The empty set",
+type="content",
+label="theemptyset",
+parents="{moreonsets}",
+nooftokens = 209
+]
+Subsection: The empty set
+
+
+
+There is a unique set containing no or zero elements. This set is called the empty set and
+is denoted $\emptyset$ i.e.,
+$$
+\emptyset = \{\}\qquad\text{and}\qquad |\emptyset| = 0.
+$$
+
+<a href="#fd81ef2f-1167-486f-abeb-ec0998be59ec" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=fd81ef2f-1167-486f-abeb-ec0998be59ec class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
+emptyset = set()
+print(len(emptyset))
+</script></div></div>
+
+
+Exercise 1.45:
+
+For some reason (perhaps a good one) python does not accept $\{\}$ as input for the empty set.
+Why is this? Evaluate the python snippet below and explain.
+
+
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Contains for sets",
+type="content",
+label="containsforsets",
+parents="{moreonsets}",
+nooftokens = 625
+]
+Subsection 1.6.2: The symbols $\in$ and $\notin$
+
+
+
+The symbol $\in$ is ubiquitous in set theory (and mathematics). If
+$A$ is a set, then
+$$
+x\in A
+\tag{1.10}$$
+is a proposition. It is true if $x$ *is an element of* or *belongs to* $A$.
+The notation
+$$
+x\notin A
+$$
+is defined by the proposition $\neg (x\in A)$. Also, as a bit of short hand notation, we will write
+$$
+a_1, a_2, \dots, a_n\in A\qquad\text{for the proposition}\qquad (a_1\in A)\land (a_2\in A)\land \cdots \land (a_n\in A).
+$$
+
+Belongs to ($\in$) is straightforward in python.
+
+<a href="#a9481061-514f-4d76-8f3b-4f3b9fda6aec" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=a9481061-514f-4d76-8f3b-4f3b9fda6aec class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
+S = {1,2,3}
+print("S = ", S)
+print("The element 1 is in S: ", 1 in S)
+print("The element 4 is in S: ", 4 in S)
+</script></div></div>
+
+
+Quizexercise 1.46:
+
+\begin{paragraphquiz}
+  \question
+  \box$\in$\box, but \box$\not\in$\box. This exercise actually has \box possible correct solutions
+if $\{1, 2, 3\}$ is in the second empty box and $\{4, 5, 6\}$ in the fourth empty box.
+
+\answer
+  $\{1, 2, 3\}$
+  \answer
+  $\{4, 5, 6\}$
+  \answer
+  $0$
+  \answer
+  $1$
+  \answer
+  $3$
+  \answer
+  $6$
+  \answer
+  $7$
+
+\case{(is 41326)}{T} 
+  Correct!
+  \case{(is 41526)}{T} 
+  Correct!
+  \case{(is 41726)}{T} 
+  Correct!
+  \case{(is 51326)}{T} 
+  Correct!
+  \case{(is 51426)}{T} 
+  Correct!
+  \case{(is 51726)}{T} 
+  Correct!
+
+\default
+  Nope. Try again!
+\end{paragraphquiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="Subsets",
+type="content",
+label="subsets",
+parents="{moreonsets, containsforsets}",
+nooftokens = 866
+]
+Subsection 1.6.3: Subsets
+
+
+
+If $A$ and $B$ are sets, then <footnote>$A\subseteq B$->At times, the symbol $\subset$ is used instead of $\subseteq$. In our context these two symbols mean the same. However, the notation $A\subsetneq B$ means that $A\subseteq B$ and
+  $A\neq B$. For example,
+  $\{1, 2, 3\} \subseteq \{1, 2, 3\}$ and
+  $\{1, 2, 3\} \subset \{1, 2, 3\}$.</footnote> means that
+every element of $A$ is an element of $B$. So $A\subseteq B$ is a placeholder for the proposition
+$$
+\forall x\in A : x\in B
+$$
+
+In this case we say
+that *$A$ is a subset of $B$*. We also use the notation $A\subsetneq B$ to
+indicate that $A\subseteq B$ and $A\neq B$. In this case we say that
+$A$ is a *strict* subset of $B$.
+
+
+Exercise 1.47:
+
+List the subsets of $\{1, 2\}$. How many are there?
+
+/Exercise
+
+
+Exercise 1.48:
+
+It turns out that the empty set $\emptyset$ is a subset of any set.
+
+
+
+Explain why this is so using the definition of $\subseteq$.
+
+\begin{prompting}
+Explain precisely in terms of propositions and logic why the empty set is a subset of any given set.
+\end{prompting}
+
+/Exercise
+
+
+Exercise 1.49:
+
+Below Sage (not python) will list all subsets of the set $\{1, 2, 3\}$. Before pressing
+the Compute button, try to write them down on your own.
+
+
+
+List all the subsets of a set with five elements. In general,  how many subsets does a set with $n$ elements have?
+
+/Exercise
+
+
+Quizexercise 1.50:
+
+\begin{paragraphquiz}
+  \question
+  The set \box is not a subset of $A=$\box, simply because \box does not belong to $A$.
+  This exercise actually has \box possible correct solutions.
+
+\answer
+  $\{1, 2, 3\}$
+  \answer
+  $\{-1, 1, 2, 3, 4\}$
+  \answer
+  $\{-1, 0, 1, 2, 4\}$
+  \answer
+  $3$
+  \answer
+  $-1$
+  \answer
+  $5$
+  \answer
+  $6$
+  \answer
+  $0$
+  \case{(is 1347)}{T}   Correct!
+  \case{(is 2157)}{T}   Correct!
+  \case{(is 2347)}{T}   Correct!
+  \case{(is 3287)}{T}   Correct!
+  \case{(is 3157)}{T}   Correct!
+  \case{(is 3187)}{T}   Correct!
+  \default
+  Nope. Try again!
+\end{paragraphquiz}
+
+/Quizexercise
+
+
+Quizexercise 1.51:
+
+\begin{paragraphquiz}
+  \question
+  The empty set has \box elements. A set with \box elements has \box subsets. In general a set with
+  $n$ elements has \box subsets.
+  \answer
+  $1$
+  \answer
+  $0$
+  \answer
+  $5$
+  \answer
+  $25$
+  \answer
+  $32$
+  \answer
+  $n^2$
+  \answer
+  $2^n$
+  \case{(is 2357)}{T}
+  Correct!
+  \default
+  Nope. Try again!
+\end{paragraphquiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="Set builder notation",
+type="content",
+label="setbuildernotation",
+parents="{subsets}",
+nooftokens = 1071
+]
+Subsection 1.6.4: Set-builder notation
+
+
+
+If $S$ is a set and $p(x)$ a predicate for $x\in S$, then we build the subset
+$$
+\{x\in S \mid p(x)\}\subseteq S
+\tag{1.11}$$
+of $x\in S$ such that $p(x)$ is true.
+
+
+Example 1.52:
+
+Suppose that $S = \{-2, -1, 2, 3\}$ and
+$$
+p(x) = x \text{\ is positive.}
+$$
+Then
+$$
+\{x\in S\mid p(x)\} = \{2, 3\} \subseteq S.
+$$
+
+/Example
+
+Python:
+This notation has found its way to several programming languages like list
+comprehension in python.
+
+
+
+
+Suppose that $p_1(x), \dots, p_n(x)$ are predicates with a variable $x$ taking values
+in $S$, then we often use the notation (using $,$ instead of $\land$)
+$$
+\{x\in S \mid p_1(x), \dots, p_n(x)\}\quad\text{for}\quad  \{x\in S \mid p_1(x)\land \dots\land p_n(x)\}.
+$$
+
+
+Exercise 1.53:
+
+List the elements in the following subsets.
+\begin{enumerate}\item (i)
+$$
+\{x\in \mathbb{Z} \mid x^2 < 10\}.
+$$
+\item (ii)
+  $$
+  \{(x, y)\in \mathbb{Z}^2 \mid x^2 + y^2 < 5\}.
+  $$
+\end{enumerate}
+
+/Exercise
+
+
+Exercise 1.54:
+
+Consider the predicate $q(n)$
+  $$
+  n\text{ and }n+2\text{ are both prime numbers}.
+  $$
+Write
+down the elements in
+$$
+\{n\in \mathbb{N}\times \mathbb{N} \mid q(n) \land n \leq 50\}.
+$$
+Is
+$$
+\{n\in \mathbb{N}\times \mathbb{N}\mid q(n)\}
+$$
+an infinite set?
+
+\begin{hint}
+Explore the fascinating world of prime numbers and learn about twin primes: https://en.wikipedia.org/wiki/Twin_prime.
+\end{hint}
+
+/Exercise
+
+
+Exercise 1.55:
+
+You have previously encountered systems of linear equations like
+$$\begin{aligned}
+  x + y &= 3\\
+  3x - y &=  5. 
+\end{aligned}\tag{1.12}$$
+The solutions to (1.12) can be identified with a subset of
+$\mathbb{R}^2$. Define this subset precisely i.e., write the subset as
+$$
+\{(x, y)\in \mathbb{R}^2 \mid p(x, y)\},
+$$
+where $p(x, y)$ is a predicate in the variables $x, y\in \mathbb{R}$.
+
+/Exercise
+
+
+Exercise 1.56:
+
+Suppose that $X = \mathbb{R}$ and
+$$
+Y = \{x\in \mathbb{R} \mid x > 0,\, x < 2\}.
+$$
+Then write down precisely what $X\setminus Y$ is i.e., find suitable predicates $q_1, q_2$ in the
+variable $x$, such that $q(x) = q_1(x) \lor q_2(x)$
+and
+$$
+X\setminus Y = \{x\in \mathbb{R} \mid q(x)\}.
+$$
+
+/Exercise
+
+
+Exercise 1.57:
+
+Consider the subset $S$ of $\mathbb{R}^2$ pictured in the drawing below
+
+
+
+Express $S$ as
+$$
+S = \{(x, y)\in \mathbb{R}^2 \mid p_1(x, y), p_2(x, y), p_3(x, y)\},
+$$
+where $p_1, p_2, p_3$ are predicates in the variables $x, y$.
+
+Hint:
+  A predicate in the variables $x, y$ could be something like
+  $$
+  x -y \geq 17.
+  $$
+
+
+Express $\mathbb{R}^2\setminus S$ as
+$$
+\{(x, y)\in \mathbb{R}^2 \mid p(x, y)\},
+$$
+where
+$$
+p(x, y) = q_1(x, y) \lor q_2(x, y) \lor q_3(x, y)
+$$
+and $q_1, q_2$ and $q_2$ are suitable predicates in the variables $x, y$.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Operations on sets",
+type="content",
+label="operationsonsets",
+parents="{moreonsets}",
+nooftokens = 1322
+]
+Subsection 1.6.5: Intersections, unions and the symbols $\cap,\,\, \cup$ and $\setminus$
+
+
+
+Suppose that we have two sets $A$ and $B$. Then the *intersection* $A\cap B$ is the
+set consisting of the elements in both $A$ and $B$ i.e.,
+$$
+A\cap B = \{x \mid (x\in A) \land (x\in B)\}.
+$$
+This is illustrated in the
+socalled Venn diagram: https://en.wikipedia.org/wiki/Venn_diagram below.
+
+
+
+The *union* $A\cup B$ is the
+set consisting of the elements in $A$ or $B$ i.e.,
+$$
+A\cup B = \{x \mid (x\in A) \lor (x\in B)\}.
+$$
+This is illustrated in the
+Venn diagram: https://en.wikipedia.org/wiki/Venn_diagram below.
+
+
+
+Lastly, the
+difference $A\setminus B$ (between $A$ and $B$) consists of the elements
+in $A$ not contained in $B$ i.e.,
+$$
+A\setminus B = \{x \mid (x\in A) \land (x\notin B)\}.
+$$
+This is illustrated in the
+Venn diagram: https://en.wikipedia.org/wiki/Venn_diagram below.
+
+
+
+Python:
+You should experiment using the python window below to get a feeling for these three operations.
+
+
+
+
+
+Exercise 1.58:
+
+Suppose that $A=\{1, 2, 3,4, 5\}$, $B = \{-1, 3, 4, 7\}$ and $\{2, 3, 8, 9\}$. What is
+$((A\cup B)\setminus C)\setminus B$?
+
+/Exercise
+
+
+Exercise 1.59:
+
+Let $A = \{1, 2, 3\}$, $B = \{3, 4, 5\}$ and $C = \{0, 1, 5\}$. Verify by hand (no computer) that
+\begin{enumerate}\item (i)
+  $A\cup B = \{1, 2, 3, 4, 5\}$.
+\item (ii)
+  $A\cap B = \{3\}$.
+\item (iii)
+  $A\cap (B\cap C) = \emptyset$.
+\item (iv)
+  $B\setminus A = \{4, 5\}$.
+\item (v)
+  $
+A \cap (B\cup C) = (A\cap B) \cup (A \cap C).
+  $
+\end{enumerate}
+
+/Exercise
+
+
+Exercise 1.60:
+
+Given two sets $A$ and $B$, is it true that
+$A \cap B = B \cap A$ and $A\cup B = B\cup A$?
+
+What about $A\setminus B = B\setminus A$?
+
+Suppose that $A$ and $B$ are two finite sets. Is it true that
+$$
+|A\setminus B| = |A| - |B|?
+$$
+What about
+$$
+|A\cup B| = |A| + |B|?
+$$
+Seriously, both formulas are wrong. Can you come up with the correct
+version of the formula for $|A \cup B|$?
+
+Use your correct formula to find a formula for
+$$
+|A\cup B \cup C|
+$$
+viewing $A\cup B$ as the first set and $C$ as the second set. Here you need
+the formula
+$$
+(A\cup B)\cap C = (A\cap C) \cup (B\cap C).
+$$
+Why is this formula true? Finally, explain why
+$$
+C \setminus (A\cap B) = (C\setminus A) \cup (C\setminus B).
+$$
+Hint:
+If you are attacking the last part of this exercise using Exercise {?}logictt{/?}, you
+may find it useful to notice that two sets $S_1, S_2$ are equal i.e, $S_1 = S_2$
+if and only if
+$$
+x\in S_1 \iff x\in S_2.
+$$
+Also,
+$$\begin{aligned}
+x &\in S_1 \cup S_2 \iff x\in S_1 \lor x\in S_2\\
+x &\in S_1 \cap S_2 \iff x\in S_1 \land x\in S_2\\
+x &\in S_1 \setminus S_2 \iff x\in S_1 \land x\not\in S_2\\
+x &\not\in S_1 \iff \neg (x\in S_1).
+\end{aligned}$$
+
+
+/Exercise
+
+
+Exercise 1.61:
+
+There is one more operation called the symmetric difference between two sets $A$ and $B$. It is
+denoted $A\, \Delta\, B$. Experiment in the python window below to find out exactly what it does.
+Is it true that $A\, \Delta\, B = B\, \Delta\, A$?
+
+
+
+/Exercise
+
+The following is an excerpt from the infamous *Beredskabsprøve Datalogi*.
+
+
+Quizexercise 1.62:
+
+\begin{quiz}
+\question
+Let $X$ and $Y$ denote sets. Which of the following are true?
+\answer{T}
+$X \cup X = X$
+\answer{T}
+$X\cap X = X$
+\answer{F}
+$X\setminus X = X$
+\answer{T}
+$X\subseteq X\cap X$
+\answer{T}
+$\emptyset \subseteq X$
+\answer{T}
+For some sets $X$ and $Y$ we can have
+$$
+X\cap Y = X\cup Y.
+$$
+\end{quiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="Pairsm triples and tuples of sets",
+type="content",
+label="tuplessets",
+parents="{operationsonsets}",
+nooftokens = 916
+]
+Subsection 1.6.6: Pairs, triples and tuples
+
+
+
+Oftentimes we want to consider more than one variable as
+input to a predicate. It is convenient to group the
+variables into one object consisting of the variables. This
+is done using tuples.
+
+Given two sets $A$ and $B$, we combine
+two elements $a\in A$ and $b\in B$ into a pair $(a, b)$, which 
+is an element of the Cartesian
+  product: https://en.wikipedia.org/wiki/Cartesian_product
+
+$$
+A \times B = \{(a, b) \mid a\in A, b\in B\}.
+$$
+of $A$ and $B$. This is a new set built from $A$ and $B$.
+
+
+Example 1.63:
+
+If $A = \{1, 2\}$ and $B = \{1, 2, 3\}$, then
+$$
+A\times B = 
+\{(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)\}.
+$$
+
+/Example
+
+
+Exercise 1.64:
+
+Consider two pairs $(a, b)$ and $(c, d)$ each from in $A\times B$. When 
+is $(a, b) = (c, d)$?
+
+/Exercise
+
+Python:
+The Cartesian product can be computed in python as shown below.
+
+
+
+
+There is no need to restrict ourselves to pairs. We might as well
+consider triples $A\times B\times C$ i.e., 
+the set of all $(a, b, c)$, where $A$, $B$ and $C$ are sets, or
+for that matter general tuples
+$$
+(a_1, a_2, \dots, a_n)\in A_1\times A_2\times \cdots \times A_n
+\tag{1.13}$$
+of any length $n\in \mathbb{N}$, where $a_1\in A_1, a_2\in A_2, 
+\dots, a_n\in A_n$. Based on the above example with tuples we have,
+$$\begin{aligned}
+&\{0\}\times\{1, 2\}\times \{1, 2, 3\} = \\
+&\{(0, 1, 1), (0, 1, 2), (0, 1, 3), (0, 2, 1), (0, 2, 2), (0, 2, 3)\}.
+\end{aligned}$$
+
+You may check this using the python snippet below.
+
+
+
+
+Definition 1.65:
+
+For a given set $A$ and $n\in \mathbb{N}$ we define the $n$-fold cartesian product of $A$ as
+$$
+A^n = \underbrace{A\times A\times \cdots \times A}_{n\text{ times}}.
+$$
+
+/Definition
+
+
+Exercise 1.66:
+
+Formally $\mathbb{R}^2$ is the set of pairs $(a, b)$, where $a, b\in \mathbb{R}$. Is there a natural
+way of drawing elements in $\mathbb{R}^2$?
+
+/Exercise
+
+
+Exercise 1.67:
+
+Let $A$ and $B$ be two sets. Is $A\times B = B \times A$?
+
+Let $X$ be any set. What is $\emptyset \times X$?
+
+Let $A, B, C$ and $D$ be four sets. Is
+$$
+(A\times B)\cap (C\times D) = (A\cap C)\times (B\cap D)?
+$$
+
+Is
+$$
+(A\times B)\setminus (C\times D) = (A\setminus C)\times (B\setminus D)?
+$$
+
+\begin{hint}
+  See Exercise {?}sageexsets{/?}.
+\end{hint}
+
+/Exercise
+
+
+Exercise 1.68:
+
+Use python to solve Exercise (1.67) by playing with (and extending) the code below.
+
+
+
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Ordering numbers in general",
+type="content",
+label="orderingnumbers",
+parents="{naturalnumbersandintegers, rationalnumbers, realnumbers}",
+nooftokens = 671
+]
+Section 1.7: Ordering numbers
+
+
+
+Let us be a little rigorous and introduce the (usual) ordering
+on our numbers with addition and multiplication using almost full blown
+mathematical formalities. The natural order $<$ on the natural numbers
+$\mathbb{N}$ is
+$$
+1 < 2 < 3 < \cdots
+$$
+For the numbers $\mathbb{Q}$ and $\mathbb{R}$ it is less obvious how to define an order.
+Mathematical simplicity comes to the rescue here. It is enough to define
+what (the) positive numbers are! 
+We want (the) positive numbers
+to satisfy the conditions below.
+
+
+Definition 1.69:
+
+A subset $A_+$ of positive numbers in a set $A$ of numbers must satisfy
+\begin{enumerate}\item (i) For every $x\in A$ one and only one of the following conditions must hold
+\begin{enumerate}\item (a) $-x\in A_+$
+\item (b) $x = 0$
+\item (c) $x\in A_+$
+\end{enumerate}
+\item (ii) If $x, y\in A_+$, then $x + y\in A_+$ and $x y\in A_+$.
+\end{enumerate}
+For a set $A_+$ of positive numbers in $A$, we define
+$$
+x < y \iff y - x\in A_+
+$$
+and
+$$
+x\leq y \iff (x = y) \lor (x < y).
+$$
+We will write $x > 0$ if $x\in A_+$ and $x < 0$ if $-x\in A_+$.
+
+/Definition
+
+
+Remark 1.70:
+
+Notice that we only use arithmetic operations to define orders on
+numbers in Definition (1.69).
+This is also how computers compare numbers algorithmically. Also if $A = \mathbb{Z}$,
+putting $A_+ = \mathbb{N}$ makes all of the conditions in Definition (1.69)
+hold. If you are given an integer, it is $0$, positive or negative. This is the
+content of ((i.)) in Definition (1.69).
+Also given two natural numbers, their product and sum are also natural numbers. This is
+the content of ((ii.)) in Definition (1.69).
+
+/Remark
+
+
+Exercise 1.71:
+
+Suppose that $a, x, y\in A$, where $A$ is a set of numbers and $<$ given
+by a subset of positive numbers $A_+$ as in Definition (1.69).
+Prove that
+\begin{enumerate}\item (i)  $(x < y) \land (y < z) \implies x < z$
+\item (ii)  $(a > 0) \land (x < y) \implies a x < a y$
+\item (iii) $(a < 0) \land (x < y) \implies a y < a x$
+\end{enumerate}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Ordering the integers",
+type="content",
+label="orderingintegers",
+parents="{orderingnumbers}",
+nooftokens = 657
+]
+Subsection 1.7.1: Ordering $\mathbb{Z}$
+
+
+
+As we saw in Remark (1.70), the natural order on $\mathbb{Z}$ is
+defined by $\mathbb{Z}_+ = \mathbb{N}$, so that $x < y$ if $y-x\in \mathbb{N}$ for $x, y\in \mathbb{Z}$.
+This completely agrees with our preconception that
+$$
+\cdots < -3 < -2 < -1 < 0 < 1 < 2 < \cdots
+\tag{1.14}$$
+
+To be precise, writing $\cdots < -3 < -2 < -1 < 0 < 1 < 2 < \cdots$ is nonsense, since $<$ is only defined for two integers.
+
+
+Exercise 1.72:
+
+  How is one supposed to interpret $0 < 1 < 2$ for example? Go ahead and formulate (1.14) correctly comparing only two integers at a time.
+  How does Python/Sage interpret $-3 < -2 < -1< 0 < 1 < 2$? Find out using the Sage snippet below.
+
+
+
+What about $1 < 5 > 3 < 4$? What about $0 < 1 > 2$?
+
+/Exercise
+
+
+Quizexercise 1.73:
+
+\begin{orderquiz}
+  \question
+  Assume that $x, y, z\in \mathbb{Z}$ and that $x \leq y$. Then drag and drop the
+  elements from the left to the right below to explain that
+  $x + z \leq y + z$.
+  \answer   By assumption $x\leq y$.
+  \answer   This means that $z - x + y\in \mathbb{N}$
+  \answer   This means that $y - x\in \mathbb{N}$
+  \answer   To show that $x + z \leq y + z$, we need to show that
+  $(y + z) - (x + z) \in \mathbb{N}$.
+  \answer   But $(y + z) - (x + z) = y + z - x + z$. Therefore,
+  \answer   But $(y + z) - (x + z) = y + z - x - z = y - x$. Therefore,
+  \answer   $(y + z) - (x + z)\in \mathbb{N}$, since
+  \answer   $y - x \in \mathbb{N}$
+  \expected{6}
+
+\case{(is 134678)}{T}
+  Spot on, my friend.
+
+\case{(is 467813)}{T}
+  This is right!
+
+\case{(is 413678)}{T}
+  This is right!
+
+\default
+  Wrong order. Check the definition of $\leq$ in {?}ordZ{/?} once more!
+\end{orderquiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="Ordering rational numbers",
+type="content",
+label="orderingrationalnumbers",
+parents="{orderingnumbers}",
+nooftokens = 326
+]
+Subsection 1.7.2: Ordering $\mathbb{Q}$
+
+
+
+We define the positive rational numbers as
+$$
+\mathbb{Q}_+ = \left\{\frac{m}{n} \in \mathbb{Q} \middle| m > 0\right\} = \left\{1, \frac{1}{2}, \frac{1}{3}, \frac{2}{3}, \frac{1}{4}, \frac{3}{4}, \dots \right\}.
+$$
+One can check that $\mathbb{Q}_+$ satisfies the conditions in
+Definition (1.69). So formally we
+get
+
+
+Proposition 1.74:
+
+For $\cfrac{a}{b},\,\,\, \cfrac{c}{d}\in \mathbb{Q}$,
+$$
+\frac{a}{b}\, < \frac{c}{d}\qquad \iff\qquad a d < b c\qquad (\text{in }\mathbb{Z}).
+$$
+
+/Proposition
+\begin{proof}
+We must check when
+$$
+\frac{c}{d} - \frac{a}{b} = \frac{b c - a d}{b d} \in \mathbb{Q}_+.
+$$
+This happens precisely when the numerator $b c - a d\in \mathbb{N}$ or $b c - a d > 0$. Therefore
+the condition in the proposition is satsified.
+\end{proof}
+\end{rag}
+\begin{rag}[
+title="Exercise on proof by contradiction that positive rational numbers have no smallest element",
+type="exercise",
+label="positiverationalsnosmallestelement",
+parents="{orderingrationalnumbers, proofbycontradiction}",
+nooftokens = 36
+]
+Exercise 1.75:
+
+Use proof by contradiction (see section (1.5.8))
+to show precisely that there does not
+exist a smallest positive rational number.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Exercises related to ordering of rational numbers",
+type="exercise",
+label="exercisesorderingrationalnumbers",
+parents="{orderingrationalnumbers}",
+nooftokens = 886
+]
+Exercise 1.76:
+
+Suppose that $a/b\in \mathbb{Q}$.
+\begin{enumerate}\item (i)
+Is it true in general that
+$$
+\frac{a}{b} \leq \frac{a+1}{b+1}?
+$$
+\item (ii)
+Is it true in some cases?
+\item (iii)
+Suppose that $n\in \mathbb{N}$. Prove that
+$$
+1 - \frac{a + n}{b+n} = \frac{b-a}{b+n}.
+$$
+\item (iv)
+What happens to the rational number
+$$
+\frac{a+n}{b+n}
+$$
+when $n\in \mathbb{N}$ grows and becomes very big?
+
+<a href="#ee51208d-738b-4be5-ab07-b205eb978cac" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=ee51208d-738b-4be5-ab07-b205eb978cac class = "collapse Sage envbuttons"><div class=sage><script type="text/x-sage">
+a = 1
+b = 2
+n = 100
+print(((a+n)/(b+n)).n())
+</script></div></div>
+\end{enumerate}
+
+/Exercise
+
+Using Definition (1.74), you can check that $\frac{2}{3} < \frac{5}{7}$, since
+$$
+2\cdot 7 < 3 \cdot 5.
+$$
+
+An easy, but surprising, 
+way of finding a rational number strictly between these two is
+adding their numerators and denominators:
+$$
+\frac{2}{3} < \frac{2 + 5}{3 + 7} < \frac{5}{7}.
+$$
+
+We wil try to explain the first inequality in mathematical general terms going through a
+rather formal proof consisting of five steps. These steps are
+given in the quiz below. Your task is to drag from the left and drop them to the right in an order, 
+so that the proof makes sense. 
+
+After that you are supposed, on your own, to write down a precise proof of
+the second inequality.
+
+
+Quizexercise 1.77:
+
+\begin{orderquiz}
+  \question
+  Order the arguments below so that they constitute a coherent explanation of the
+  statement that if
+  $$
+  \frac{a}{b} < \frac{c}{d},
+  $$
+  then
+  $$
+  \frac{a}{b} < \frac{a + c}{b + d}
+  $$
+
+\answer   By definition this means that $a d < b c$.
+
+\answer   We are assuming that $\frac{a}{b} < \frac{c}{d}$. 
+
+\answer   For integers $x, y, z$ we know that the rule
+  $
+  x ( y + z) = x y + x z
+  $
+  holds. Therefore
+  \answer   we need to show that $a b + c d < b a + b c$.
+
+\answer   Since $a b = b a$ and $a b + a d < a b + b c$ is a consequence of $a d < b c$, we are
+  done if we know this is true.
+  \answer   However, this is a consequence of our assumption $\frac{a}{b} < \frac{c}{d}$.
+
+\answer   To show that
+  $
+  \frac{a}{b} < \frac{a+c}{b + d},
+  $
+  we need to argue that $a (b + d) < b (a + c)$.
+
+\answer
+
+we need to show that $a b + a d < b a + b c$.
+
+\expected{5}
+
+\case{(is 73856)}{T}
+  Spot on, my friend!
+
+\case{(contains 4)}{F}
+  You have not applied the formula for expanding $x(y + z)$ correctly.
+
+\default
+  Wrong order.
+
+\end{orderquiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="Ordering of the real numbers",
+type="content",
+label="orderingrealnumbers",
+parents="{orderingnumbers, rationalnumbers}",
+nooftokens = 369
+]
+Subsection 1.7.3: Ordering $\mathbb{R}$
+
+
+
+For the
+real numbers we define the positive numbers as
+$$
+\mathbb{R}_+ = \{x\in \mathbb{R} \mid x = d_0.d_1 d_2 \dots, d_0 \geq 0, x \neq 0\}.
+$$
+Even though we have not precisely defined addition and multiplication of
+the real numbers, we claim that this definition of $\mathbb{R}_+$
+satisfies the conditions of Definition (1.69).
+
+One may prove that for every $x, y\in \mathbb{R}_+$, there exists
+$N\in \mathbb{N}$, such that $N x > y$. This is the
+archimedean property of the real numbers.
+
+
+Exercise 1.81:
+
+Given two distinct real numbers $\xi_1 < \xi_2$. Prove that
+there exists a rational number $r\in \mathbb{Q}$, such that
+$$
+\xi_1 < r < \xi_2.
+$$
+
+/Exercise
+
+One other
+crucial property is the completeness of $\mathbb{R}$. It says
+that a non-empty subset $S\subseteq \mathbb{R}$ with an upper bound $B$
+i.e., $\forall x\in S: x\leq B$, always has
+a smallest upper bound. The rational numbers do not
+share this property, since for example
+$$
+S = \{x\in \mathbb{Q} \mid x^2 < 2\}
+$$
+does not have a smallest upper bound inside $\mathbb{Q}$.
+\end{rag}
+\begin{rag}[
+title="Proof by induction",
+type="content",
+label="proofbyinduction",
+parents="{variablesandpredicates}",
+nooftokens = 1813
+]
+Section 1.8: Proof by induction
+
+
+
+A <footnote>precocious Gauss->See the article Gauss's Day of Reckoning: https://www.americanscientist.org/article/gausss-day-of-reckoning for some history of this anecdote.</footnote>  proved the formula
+$$
+1 + 2 + \cdots + n = \frac{n(n+1)}{2}
+\tag{1.15}$$
+at the age of seven displaying remarkable ingenuity for his age. Lesser
+mortals usually use induction to prove this formula. Gauss was asked
+along with his classmates to compute the sum of all natural numbers
+$1, 2, \dots, 100$. Using his formula he quickly came up with the correct
+answer $5050$. His classmates had to work for the entire lesson. 
+
+Suppose that the formula in (1.15) is viewed as a
+proposition $p(n)$. To prove the formula we need to prove it for all
+natural numbers (you can easily see that $p(1)$ and $p(2)$ are true) i.e.,
+we need to prove
+$$
+\forall n\in \mathbb{N}: p(n).
+$$
+An induction proof is a way of proving this statement by showing two things:
+\begin{enumerate}\item (i)
+  $p(1)$
+\item (ii)
+  $\forall n\in \mathbb{N}: p(n)\implies p(n+1)$
+\end{enumerate}
+These two statements ensure that $p(1) \implies p(2)$. Therefore
+$p(2)$ must be true, since we assumed $p(1)$ true from the
+beginning. Similarly $p(2)\implies p(3)$ ensures that $p(3)$
+is true and so on. In fact we have proved $p(n)$ for every $n\in \mathbb{N}$
+using this technique. One can prove this using proof by
+contradiction and that every non-empty subset
+of $\mathbb{N}$ has a first element. In general if $S$ is a subset of set with an order $\leq$, then
+$s\in S$ is called a first element if
+$$
+\forall x\in S: s \leq x.
+$$
+A crucial rule (or axiom) is that every non-empty subset of $\mathbb{N}$ has
+ a first element! Notice that this is false for $\mathbb{Z}$.
+
+
+Theorem 1.82:
+
+  Suppose that $p(n)$ are infinitely many propositions given by $n\in \mathbb{N}$. Then
+  $$
+  \forall n\in \mathbb{N}: p(n)
+  $$
+  is true if
+\begin{enumerate}\item (i)
+  $p(1)$ is true.
+\item (ii)
+  $\left(\forall n\in \mathbb{N}: p(n)\implies p(n+1)\right)$ is true.
+\end{enumerate}
+
+/Theorem
+
+\begin{proof}
+Suppose by contradiction that there exists $n\in \mathbb{N}$, such that
+$p(n)$ is false. Then the subset
+$$
+S = \{n\in \mathbb{N} \mid \neg p(n)\}\subseteq \mathbb{N}
+$$
+is non-empty. Therefore it has a first element $n_0\in S$. 
+Here $n_0 > 1$, since $p(1)$ is assumed to be true. So we
+know that $p(n_0-1)$ is true and that
+$p(n_0-1)\implies p(n_0)$ is true. But the latter
+implication is a contradiction, since true implies
+false is false.
+\end{proof}
+
+
+
+Let us see how an induction proof plays out in the above example
+with the statement $p(n)$ that
+$$
+1 + 2 + \cdots + n = \frac{n(n+1)}{2}.
+\tag{1.16}$$
+Clearly $p(1)$ is true. We need to prove $p(n)\implies p(n+1)$, so
+we assume that $p(n)$ holds i.e., that (1.16) is true.
+Then we may add $n+1$ to both sides of (1.16) to get
+$$
+1 + 2 + \cdots + n + (n+1) = \frac{n(n+1)}{2} + (n+1).
+$$
+Here the right hand side can be rewritten as
+$$
+\frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2},
+$$
+which is exactly what we want. This is the conjectured formula for
+the sum of the numbers $1, 2, \dots, n, n+1$. Therefore
+we have proved that $p(n)\implies p(n+1)$ and the induction
+proof is complete.
+
+
+Example 1.83:
+
+  For a real number $r\neq 1$, the extremely useful formula
+  $$
+  1 + r + \cdots + r^n = \frac{1 - r^{n+1}}{1-r}
+  \tag{1.17}$$
+  holds. Let us prove this formula by induction. For $n=1$ this amounts to the identity
+  $$
+  1 + r = \frac{1-r^2}{1-r},
+  $$
+  which is true since $1-r^2 = (1+r)(1-r)$. We let $p(n)$ denote
+  the identity in (1.17). We have seen that $p(1)$ is true. The induction step
+  consists in proving $p(n)\implies p(n+1)$. We can prove this
+  by adding $r^{n+1}$ to the right hand side in (1.17):
+  $$
+  \frac{1 - r^{n+1}}{1-r} + r^{n+1} = \frac{1 - r^{n+1} + (1-r) r^{n+1}}{1-r} = \frac{1 - r^{n+2}}{1-r}.
+  \tag{1.18}$$
+Real life application:
+    In order to pay for a house you borrow $P$ DKK at an interest of
+    $r$ per year. You want to pay off your debt over $N$ years by
+    paying a fixed amount each year. How much is the fixed yearly
+    amount you need to pay?
+
+Let us analyze the setup: suppose that the fixed yearly amount
+    is $Y$. We will find an equation giving us $Y$ in terms of
+    $P, N$ and $r$. Put $q = 1+ r$.
+
+After one year you owe
+    $$
+    q P - Y.
+    $$
+    After two years you owe
+    $$
+    q(q P - Y) - Y.
+    $$
+    After three years you owe
+    $$
+    q ( q ( q P - Y) - Y) - Y.
+    $$
+    In general after $n$ years you owe
+    $$
+    q^n P - Y (1 + q + \cdots + q^{n-1}).
+    $$
+    Since we want to be debt free after $N$ years, the yearly payment will have to satisfy
+    $$
+    q^N P = Y ( 1 + q + \cdots + q^{N-1}).
+    $$
+    By the formula (1.17), we get
+    $$
+    q^N P = Y \frac{1-q^N}{1-q}.
+    $$
+    Here $Y$ can be isolated giving the formula
+    $$
+    Y = \frac{r P}{1 - \left(\frac{1}{1+r}\right)^N}.
+    $$ 
+    With the current (August 2024) interest rate around four percent, you pay a fixed monthly
+    amount of around 4770 DKK (down from 5420 DKK in 2023, when the interest rate was five percent) for borrowing one million DKK over $30$ years.
+    
+  
+
+/Example
+\end{rag}
+\begin{rag}[
+title="Exercises on induction",
+type="exercise",
+label="exercisesoninduction",
+parents="{proofbyinduction}",
+nooftokens = 651
+]
+Exercise 1.84:
+
+Verify the computation (induction step) in (1.18) i.e., explain
+the operations used to go from the left to the right of the two equalities.
+
+/Exercise
+
+
+Exercise 1.85:
+
+Locate the mistake in the following fake induction proof of the curious fact that
+$2^n = 2$ 
+for every $n\in \mathbb{N}$.
+
+Let $p(n)$ be
+the proposition $2^n = 2$. Then $p(1)$ is true.
+
+We wish to prove that $p(n) \implies p(n+1)$ assuming that $p(1), \dots, p(n)$ are true:
+$$\begin{aligned}
+  2^{n+1} &= 2^n \cdot 2\\
+          &= 2^n \cdot \frac{2^n}{2^{n-1}}\\
+          &= 2 \cdot \frac{2}{2}\,\,\text{(by }p(n)\text{ and }p(n-1)\text{)}\\
+          &= 2.
+\end{aligned}$$
+This shows that $p(n) \implies p(n+1)$ and therefore that $2^n = 2$ for every
+$n\in \mathbb{N}\setminus\{0\}$.
+
+/Exercise
+
+
+Exercise 1.86:
+
+Prove by induction that the sum of the first $n$ odd numbers is
+given by the formula
+$$
+1 + 3 + \cdots + (2 n - 1) = n^2,
+$$
+i.e., for $n=5$ we have
+$$
+1 + 3 + 5 + 7 + 9 = 25.
+$$
+
+/Exercise
+
+
+Exercise 1.87:
+
+Prove by induction that
+$$
+1^2 + 2^2 + 3^2 + \cdots + n^2 = \frac{n(n+1)(2n + 1)}{6}.
+$$, 
+
+/Exercise
+
+
+Exercise 1.88:
+
+Prove using the idea of induction that
+$$
+2^n < n!
+$$
+for $n\geq 4$.
+
+
+/Exercise
+
+The last exercise related to induction concerns the famous pigeonhole principle: https://en.wikipedia.org/wiki/Pigeonhole_principle. The statement itself looks innocent, well almost ridiculous, but it is very powerful: https://mindyourdecisions.com/blog/2008/11/25/16-fun-applications-of-the-pigeonhole-principle/. Even the go-to website 
+mathoverflow: https://mathoverflow.net/ for research mathematicians has 
+a quite nice thread: https://mathoverflow.net/questions/4279/interesting-applications-of-the-pigeonhole-principle 
+about this.
+
+
+Exercise 1.89:
+
+Prove the following by induction on $m$: if $n$ items are put into $m$ containers and 
+$n > m$, then at least one container must contain more than one item.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="The concept of a function",
+type=content"",
+label="functions",
+parents="{moreonsets, tuplessets, computeralgebra}",
+nooftokens = 1623
+]
+Section 1.9: The concept of a function
+
+
+
+A function is a crucial concept in mathematics. In Sage (actually python here) a simple function can be
+programmed like
+
+
+
+The code above seems to take a number and returns the number plus one. This (f) is in fact a function 
+taking as *input* a number and returning as *output* the number plus one. Notice that
+we do not even know which numbers we are talking about here. In mathematics we need to have
+a more precise notion of a function. 
+
+The above python function could more formally be denoted as $f: \mathbb{Z}\rightarrow \mathbb{Z}$ with
+$f(n) = n+1$ if we are dealing with the integers, but we cannot tell from the code.
+
+Well, to be fair ...:
+To be completely fair, it is possible from Python 3.5 to add type annotations to functions, so that we could write
+<code>def f(n: int) -&gt; int: return(n+1)
+</code>
+
+
+in the Python code to state that the function should take values in the integers and return integers.
+
+
+The precise mathematical definition of a function in terms of sets is
+the following. A function $f: S\rightarrow T$ is a subset
+$f\subseteq S\times T$, such that
+$(s, t_1)\in f \land (s, t_2)\in f \implies t_1 = t_2$. In words it states that a
+function $f: S\rightarrow T$ is a subset $f$ of $S\times T$, containing pairs
+having only one second coordinate for every first coordinate.
+
+The everyday working definition of a
+function is more intuitive: a machine taking input from some set
+$S$ and giving output in some set $T$. The uniqueness of the output
+is encoded in the mathematical definition of a function.
+
+
+Definition 1.90:
+
+Mathematically a function $f$ takes values from a set $S$ and returns values in a set $T$. In details,
+it is denoted $f: S\rightarrow T$ and the value associated with $s\in S$ is denoted $f(s)\in T$.
+Here $S$ is called *the domain* of $f$ and $T$ is called *the codomain* of $f$. Less,
+formally $S$ is called the input set and $T$ the output set for $f$.
+
+/Definition
+
+
+Remark 1.91:
+
+  Please notice that a function is a very, very general concept. It is not just something
+  that you draw as a graph on a piece of paper. Of course, you can draw a function
+  $f:\mathbb{R}\rightarrow \mathbb{R}$ like $f(x) = x^2$:
+  
+  Generally, a function $f: S\rightarrow T$ is given by a machine, formula or algorithm that
+  computes $f(x)\in T$ for every $x\in S$. Nothing more, nothing less. It really has nothing to
+  do with a graph (even though graphs can sometimes be useful for visualizing certain functions like $f(x) = x^2$).
+
+/Remark
+
+
+Example 1.92:
+
+  Good examples of functions can be found in the cryptographic hash functions: https://en.wikipedia.org/wiki/Cryptographic_hash_function. They are examples of complicated functions $f:S \rightarrow T$, where
+  $S$ is infinite and $T$ finite. Here $S$ could be data like plain text files and $T$ could be
+  a $256$ bit number. This is the setup for the widely used sha-256 cryptographic hash function.
+  The whole point of a cryptographic hash function is that it must be humanly impossible to
+  <footnote>compute $y$ with $f(y) = f(x)$ given $f(x)$->A pair $x\neq y$ with $f(x) = f(y)$ is called a collision</footnote>. 
+  In fact, sha-256 is used in the Bitcoin block chain. The precise definition of
+  sha-256 can be found in FIPS PUB 180-4: http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf approved by the Secretary of Commerce.
+
+Other interesting functions output a bounded size digital footprint (checksum) of a file (like md5: https://en.wikipedia.org/wiki/MD5). This is very useful
+for checking data integrity of downloads over the internet. The md5 hash is a $128$ bit number.
+
+Instead of listing $256$ or $128$ bits for the hash value one uses hexadecimal notation with digits
+in 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 , a, b, c, d, e, f. A pair of hexadecimal digits then represents
+a byte or $8$ bits. Output from sha-256 and md5 consist of $64$ and $32$ hexadecimal
+digits respectively. You are welcome to experiment with these two hash functions in the
+Sage window below.
+
+
+
+
+/Example
+
+
+Exercise 1.93:
+
+What is the sha-256 hash of your name? Change a
+few letters and recompute. Do you see any system? What about the md5 hash function?
+Can you find two different strings with the same md5 hash using your computer?
+
+\begin{hint}
+  I have not answered the last question myself, but I am told that it is possible to find
+  a collision for md5 using a garden variety home computer. Browsing the internet, it
+  seems that the two strings $s_1$ and $s_2$ given in <footnote>hexadecimal notation->This notation represents a sequence of bytes given by pairs of hexadecimal digits</footnote> by
+<code>d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f89 
+55ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5b 
+d8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0 
+e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70
+</code>
+
+
+and
+<code>d131dd02c5e6eec4693d9a0698aff95c2fcab50712467eab4004583eb8fb7f89 
+55ad340609f4b30283e4888325f1415a085125e8f7cdc99fd91dbd7280373c5b 
+d8823e3156348f5bae6dacd436c919c6dd53e23487da03fd02396306d248cda0 
+e99f33420f577ee8ce54b67080280d1ec69821bcb6a8839396f965ab6ff72a70 
+</code>
+
+
+give a collision for md5. Verify that $s_1\neq s_2$ and
+that they give the same md5 hash. If you find a collision
+for sha-256 you will
+become world famous.
+
+\begin{hint}
+
+\end{hint}
+\end{hint}
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="When are two function the same and notations for defining functions",
+type="content",
+label="moreonfunctions",
+parents="{functions}",
+nooftokens = 627
+]
+Subsection 1.9.1: When are two functions the same?
+
+
+
+Suppose that $f(x) = x + 1$. This way of defining a function is a bit sploppy. The
+domain and codomain is not defined. The correct way of defining
+a function also includes defining its domain and codomain as in Definition
+(1.90). Two functions $f, g$ are the same when
+they have the same domain $S$ and codomain $T$ and
+$f(x) = g(x)$ for every $x\in S$.
+
+
+Example 1.94:
+
+The functions $f_1: \mathbb{R} \rightarrow \mathbb{R}$ and $f_2: \{x\in \mathbb{R} \mid x\geq 0\}\rightarrow \mathbb{R}$
+given by $f_1(x) = x^2$ and $f_2(x) = x^2$ are not the same! Their domains
+are different.
+
+/Example
+
+Subsection 1.9.2: Notations for defining a function
+
+
+
+If $f: S\rightarrow T$ is a function and $S$ is a finite set, then you can
+define $f$ using a simple table. This is best illustrated using an
+example. Suppose that $S = \{1, 2, 3\}, T = \mathbb{R}$ and
+$$\begin{aligned} 
+  f(1) &= \sqrt{2}\\
+  f(2) &= \pi\\
+  f(3) &= -1.
+\end{aligned}$$
+Then $f$ is expressed in table form as
+$$
+\def\arraystretch{1.5}
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3\\ \hline
+f(x) & \sqrt{2} & \pi & -1
+\end{array}
+$$
+
+Very often the bracket (or *Tuborg* in Danish) notation is used. It is
+similar to if-then-else statements in programming:
+$$
+f(x) =
+\begin{cases}
+  0 &\text{if } x\leq 0\\
+  x^2 &\text{if } x > 0
+\end{cases}
+\tag{1.19}$$
+defines the function $f:\mathbb{R} \rightarrow \mathbb{R}$ that outputs $0$ if the
+input $x\leq 0$ and $x^2$ if $x>0$. In python we may express this as
+
+
+
+
+Exercise 1.95:
+
+What is $f(-17)$ and $f(17)$ for the function defined in (1.19). Draw
+the graph of $f$. Come up with a function $f:S\rightarrow T$, where it
+does not make sense to draw a graph.
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Composition of functions",
+type="content",
+label="compositionogfunctions",
+parents="{functions}",
+nooftokens = 616
+]
+Subsection 1.9.3: Composition of functions
+
+
+
+Given two functions $f: S\rightarrow T$ and $g: U\rightarrow V$, where
+$V\subseteq S$, we define a new function $f\circ g: U \rightarrow T$ by
+$$
+(f\circ g)(u) = f(g(u)).
+$$
+This notion calls for some reflection. We have a total of four sets
+in this definition: $U, V, S$ and $T$ and, not to forget, the condition that
+$V\subseteq S$. If this last condition was not satisfied it would be
+meaningless to apply the function $f$ to $g(u)$.
+I hope the diagram below helps the
+understanding.
+
+
+
+
+Remark 1.96:
+
+  The concept of a function is powerful and underlies functional programming in computer science: every computation can be realized as applying a composition of functions to an argument. This is exemplified in the computer language
+  Haskell: https://www.haskell.org/.
+  
+/Remark
+
+
+Exercise 1.97:
+
+Suppose that
+$$
+U = \{1, 2, 3\},\qquad S = \{1, 2, 3, 4\}\qquad\text{and}\qquad T = \{7, 8, 9\}
+$$
+and that $g: U \rightarrow S$ and $f: S\rightarrow T$ are given by the tables
+$$
+\def\arraystretch{1.5}
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3\\ \hline
+g(x) & 1 & 3 & 4
+\end{array}\qquad\text{and}\qquad
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3 & 4\\ \hline
+f(x) & 7 & 8 & 9 & 7 
+\end{array}
+$$
+Compute the table for $(f\circ g): U\rightarrow T$. Show that $f\circ g$ is not
+injective. Adjust the table for $f$ so that $f\circ g$ becomes bijective.
+
+/Exercise
+
+
+Exercise 1.98:
+
+Consider $f: \mathbb{R}\rightarrow \mathbb{R}^2$ and $g: \mathbb{R}^2\rightarrow \mathbb{R}$ given by
+$$\begin{aligned}
+  f(t) &= (t^2, t^3)\\
+  g((x, y)) &= \cos(x y) + x \sin(x + y).
+\end{aligned}$$
+What is $(g\circ f)(t)$ as a function from $\mathbb{R}$ to $\mathbb{R}$ in terms of $t$?
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="Functions from and into products",
+type="content",
+label="functionsfromandintoproducts",
+parents="{functions, tuplessets}",
+nooftokens = 375
+]
+Subsection 1.9.4: Functions from and into products
+
+
+
+
+Definition 1.99:
+
+Suppose that
+$$
+B = A_1 \times A_2 \times \cdots \times A_n
+$$
+as in (1.13). Then the function
+$\pi_i:B\rightarrow A_i$ given by
+$$
+\pi_i(a_1, \dots, a_i, \dots, a_n) = a_i
+$$
+is called the projection on the $i$-th coordinate.
+
+If $f: A\rightarrow B$ is a function, then
+$$
+f(a) = (f_1(a), \dots, f_n(a)),
+$$
+where $f_i = \pi_i\circ f$.
+
+/Definition
+
+
+Example 1.100:
+
+Suppose that $B = \mathbb{R}\times \mathbb{R} = \mathbb{R}^2$ and $(x, y) \in B$. Then
+$$\begin{aligned}
+\pi_1((1, 2)) &= 1\\
+\pi_2((1, 2)) &= 2.
+\end{aligned}$$
+Now suppose that $A = \mathbb{R}^3$ and that $f: A\rightarrow B$ is given by
+$$
+f((x, y, z)) = (x^2 + y, x y , z^3).
+$$
+Then
+$$\begin{aligned}
+f_1((1, 2, 3)) &= 3\\
+f_2((1, 2, 3)) &= 2\\
+f_3((1, 2, 3)) &= 27.
+\end{aligned}$$
+
+/Example
+\end{rag}
+\begin{rag}[
+title="Special properties of functions",
+type="content",
+label="specialpropertiesoffunctions",
+parents="{functions}",
+nooftokens = 1148
+]
+Subsection 1.9.5: Injective and surjective functions
+
+
+
+We now define three very important notions related to functions.
+
+
+Definition 1.101:
+
+  Let $f: S\rightarrow T$ be a function. Then $f$ is called
+  \begin{enumerate}\item (i)
+    *injective*, if $f(x) = f(y) \implies x = y$ for every $x, y\in S$.
+  \item (ii)
+    *surjective*, if for every $y\in T$, there exists $x\in S$, such that $f(x) = y$.
+  \item (iii)
+    *bijective*, if it is both injective and surjective.
+  \end{enumerate}
+
+/Definition
+
+
+Exercise 1.102:
+
+Is a cryptographic hash-function as defined in Example (1.92) injective?
+
+/Exercise
+
+
+Exercise 1.103:
+
+Suppose that
+$$
+S = \{1, 2, 3\}\qquad\text{and}\qquad T = \{1, 2, 3, 4\}
+$$
+and that the function $f: S\rightarrow T$ is defined by the table
+$$
+\def\arraystretch{1.5}
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3\\ \hline
+f(x) & 1 & 2 & 4
+\end{array}
+$$
+Is $f$ injective? Is it surjective? Is it possible to adjust the table so that
+$f$ becomes injective?
+Is it possible to adjust the table so that
+$f$ becomes surjective?
+
+/Exercise
+
+
+Exercise 1.104:
+
+Consider the function $f:S \rightarrow T$ given by
+$$
+f(x) = x^2,
+$$
+where $S = T = \mathbb{R}$.
+Is $f$ injective? Is $f$ surjective? Suggest how to change $S$ and $T$ so that $f:S\rightarrow T$ becomes
+bijective.
+
+/Exercise
+
+
+Exercise 1.105:
+
+Consider the function $f:\mathbb{Z} \rightarrow \mathbb{Z}$ given by
+$$
+f(x) = x + 1
+$$
+Show that $f$ is bijective.
+
+/Exercise
+
+
+Exercise 1.106:
+
+Write down precisely how the truth table for $p\implies q$ may
+be expressed in terms of a function $f: S\rightarrow T$. What are the sets $S$ and $T$ in this case?
+
+/Exercise
+
+Subsection 1.9.6: The inverse function
+
+
+
+If $f:S\rightarrow T$ is bijective, then we may define a function $g: T\rightarrow S$, so
+that $(f\circ g)(y) = y$ for every $y\in T$ and $(g\circ f)(x)$ for every $x\in S$. This
+function is denoted $f^{-1}$.
+
+How do we define $f^{-1}(y)$ for $y\in T$? Well, since $f$ is surjective, we may find
+$x\in S$ so that $y = f(x)$. Now, we simply define
+$$
+f^{-1}(y) = x.
+\tag{1.20}$$
+We cannot have $x_1 \neq x_2$ in $S$ with $f(x_1) = f(x_2) = y$, since $f$ is injective. We only have one choice for
+$x$ in (1.20). Therefore (1.20) really is a good and sound definition.
+
+
+Example 1.107:
+
+Let $f: S\rightarrow S$, where $S = \{1, 2, 3\}$ be given by
+the table
+$$
+\def\arraystretch{1.5}
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3\\ \hline
+f(x) & 3 & 1 & 2
+\end{array}.
+$$
+Then $f^{-1}$is given by the table
+$$
+\def\arraystretch{1.5}
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3\\ \hline
+f^{-1}(x) & 2 & 3 & 1
+\end{array}.
+$$
+
+/Example
+
+
+Exercise 1.108:
+
+What if the definition of $f$ in Example (1.107) is changed to
+$$
+\def\arraystretch{1.5}
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3\\ \hline
+f(x) & 3 & 2 & 2
+\end{array}.
+$$
+Does $f^{-1}$ make sense here?
+
+/Exercise
+
+
+Exercise 1.109:
+
+What is the inverse function of $f:\mathbb{Z}\rightarrow \mathbb{Z}$ given by $f(x) = x + 1$?
+What is the inverse function of $g: S \rightarrow S$, where $g(x) = \sqrt{x}$ and
+$S = \{x\in \mathbb{R}\mid x\geq 0\}$?
+
+/Exercise
+\end{rag}
+\begin{rag}[
+title="The preimage of a subset with respect to a function",
+type="content",
+label="preimage",
+parents="{moreonsets}",
+nooftokens = 621
+]
+Subsection 1.9.7: The preimage
+
+
+
+
+Definition 1.110:
+
+Consider a
+function
+$$
+f: A \rightarrow B,
+$$
+where $A$ and $B$ are sets. If $C\subseteq B$, then the
+preimage of $C$ under $f$ is defined by
+$$
+f^{-1}(C) = \{x\in A \mid f(x)\in C\}.
+$$
+
+/Definition
+
+Definition (1.110) is short and sweet. Here is a first example of the preimage.
+
+
+Example 1.111:
+
+  Consider the function $f: A\rightarrow B$, where $A = \{1, 2, 3, 4, 5\}$ and
+  $B = \{a, b, c, d\}$ given by
+  $$
+\def\arraystretch{1.5}
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3 & 4 & 5\\ \hline
+f(x) & a & b & c & a & d
+\end{array}
+$$
+For $C = \{a, c\}$, $f^{-1}(C) = \{1, 3, 4\}$ as illustrated below.
+
+
+
+
+/Example
+
+
+Exercise 1.112:
+
+What is $f^{-1}(C)$ when $A = \mathbb{R}, B = \mathbb{R}, f(x) = x^2 - 5 x + 6$ and
+$C = (-\infty, 0]$?
+
+/Exercise
+
+
+Quizexercise 1.113:
+
+  \begin{quiz}
+    \question
+    Consider the function $f:\{1, 2, 3, 4, 5\}\rightarrow \mathbb{R}$ given by
+    $$
+\def\arraystretch{1.5}
+\begin{array}{c|ccccccc}
+x & 1 & 2 & 3 & 4 & 5\\ \hline
+f(x) & 1 & 2 & 4 & -1 & \pi
+\end{array}
+$$
+and let $C = [3, \infty)$. What is true about $f^{-1}(C)$?
+\answer{F}
+$$
+1\in f^{-1}(C)
+$$
+\answer{T}
+$$
+\{3, 5\}\subseteq f^{-1}(C)
+$$
+\answer{F}
+$$
+\{3, 4, 5\}\subseteq f^{-1}(C)
+$$
+\answer{T}
+$$
+f^{-1}(\mathbb{R}\setminus C) \cup f^{-1}(C) = \{1, 2, 3, 4, 5\}.
+$$
+\end{quiz}
+
+/Quizexercise
+\end{rag}
+\begin{rag}[
+title="Functions and neural networks",
+type="content",
+label="functionsandneuralnetworks",
+parents="{functions, functionsfromandintoproducts, computeralgebra}",
+nooftokens = 1995
+]
+Subsection 1.9.8: Neural networks
+
+
+
+Having defined functions and composition of functions, we can deflate
+the term (deep) neural network, which is often clouded in
+magic and mystery.
+
+A *neural network* is a special case of a function
+$$
+f: A\rightarrow B,
+\tag{1.21}$$
+where $A\subseteq \mathbb{R}^m$ and $B\subseteq \mathbb{R}^n$. Neural networks are
+often compositions of many intermediate functions called
+(hidden) layers.
+
+
+Remark 1.114:
+
+Recall from Definition (1.99) that a function such as (1.21) can
+be written
+$$
+f(x_1, \dots, x_m) = \left(
+f_1(x_1, \dots, x_m), \dots, f_n(x_1, \dots, x_m)\right),
+\tag{1.22}$$
+where $f_1, \dots, f_n$ are functions $A\rightarrow \mathbb{R}$. Check out
+Example (1.100).
+
+/Remark
+
+In a neural
+network the functions $f_1, f_2, \dots, f_n$ are viewed as <footnote>neurons->To be precise, the functions should be viewed as synapses: https://en.wikipedia.org/wiki/Synapse</footnote>. Depending on their
+input they either fire or do not fire a signal. Classically this is
+modelled by the perceptron: https://en.wikipedia.org/wiki/Perceptron,
+which is a function $p:\mathbb{R}^n\rightarrow \mathbb{R}$ of the form
+$$
+p(x_1, \dots, x_n) =
+\begin{cases}
+  1 &\text{if } w_1 x_1 + \cdots + w_n x_n > b\\
+  0 &\text{if } w_1 x_1 + \cdots + w_n x_n \leq b
+\end{cases}
+\tag{1.23}$$
+  for fixed numbers $w_1, \dots, w_n$ (called weights) and a number $b$ (called the threshold).
+  If the weighted sum $w_1 x_1 + \cdots + w_n x_n$ is above the threshold, the neuron
+  fires (returns the value $1$). If not it does not fire (returns the value $0$).
+
+
+
+
+Exercise 1.115:
+
+  Consider the three perceptrons $p_1, p_2, p_3: \mathbb{R}^2\rightarrow \mathbb{R}$, where
+  $$
+p_1(x, y) =
+\begin{cases}
+  1 &\text{if } -x-y > -\frac{3}{2}\\
+  0 &\text{if } -x-y \leq -\frac{3}{2}
+\end{cases},
+\qquad
+p_2(x, y) =
+\begin{cases}
+  1 &\text{if } x + y > \frac{1}{2}\\
+  0 &\text{if } x + y \leq \frac{1}{2}
+\end{cases},
+$$
+and
+$$
+p_3(x, y) =
+\begin{cases}
+  1 &\text{if } x + y > \frac{3}{2}\\
+  0 &\text{if } x + y \leq \frac{3}{2}
+\end{cases}.
+$$
+Let $f(x, y) = p_3 (p_1(x, y), p_2(x, y))$. Then $f$ is
+a composite function $f = g\circ h$ of two functions $h: \mathbb{R}^2\rightarrow \mathbb{R}^2$
+and $g: \mathbb{R}^2\rightarrow \mathbb{R}$. Write down these functions.
+
+Hint:
+Have a closer look at (1.22) in order to understand how
+functions from $\mathbb{R}^2$ to $\mathbb{R}^2$ are expressed. Notice that
+our notation is a bit inconsistent when it comes to types. For example,
+the function $p_1:\mathbb{R}^2 \rightarrow \mathbb{R}$ should really be
+denoted $p_1((x, y))$ instead of $p_1(x, y)$, since it takes input from
+$\mathbb{R}^2 = \mathbb{R}\times \mathbb{R}$. This is remedied in the (hopefully easy to understand) python code below.
+
+
+\begin{prompting}
+Explain the python code below to me.
+
+def p1(v):
+    (x, y) = v
+    if -x-y &gt; -3/2:
+        return 1
+    else:
+        return 0
+
+def p2(v):
+    (x, y) = v
+    if x + y &gt; 1/2:
+        return 1
+    else:
+        return 0
+
+def p3(v):
+    (x, y) = v
+    if x+y &gt; 3/2:
+        return 1
+    else:
+        return 0
+
+def h(v):
+    return (p1(v), p2(v))
+
+def g(v):
+    return p3(v)
+
+def f(v):
+    return g(h(v))
+
+\end{prompting}
+
+
+
+Compute
+$f(0, 0), f(1, 0), f(0, 1)$ and $f(1, 1)$.
+
+Relate the perceptrons $ p_1 $ and $ p_2 $ to the illustration
+below. What do you think the red and blue line illustrate?  What does
+it mean that a dot is solid compared to hollow? What is special
+about points between the red and blue lines?  Try to relate $f(0,0),
+f(1,0), f(0,1)$ and $f(1,1)$ to the illustration.
+
+\begin{excluderag}
+
+(Illustration courtesy of William Heyman Krill).
+\end{excluderag}
+
+
+/Exercise
+
+
+Exercise 1.116:
+
+  Give weights $w_1, w_2$ and a threshold $b$ for a perceptron $p:\mathbb{R}^2\rightarrow \mathbb{R}$ that computes
+  the logical and function $\land$ i.e, $p$ must satisfy
+  $$\begin{aligned}
+    p(0,0) &= 0\\
+    p(1, 0) &= 0\\
+    p(0,1) &= 0\\
+     p(1, 1) &= 1.
+  \end{aligned}$$
+  Do the same for the logical or function $\lor$.
+  
+/Exercise
+
+The output of one neuron can be used as input for other neurons in a potentially extremely complicated network:
+
+
+
+The diagram above represents a neural network, which is a function $\mathbb{R}^8\rightarrow \mathbb{R}^4$. This function
+  is actually a composition (represented by the hidden layers $1$, $2$, $3$ and the output layer):
+  $$
+  \mathbb{R}^8\rightarrow \mathbb{R}^9 \rightarrow \mathbb{R}^9 \rightarrow \mathbb{R}^9 \rightarrow \mathbb{R}^4.
+  $$
+  All of the nodes above, except the ones in the input layer, represent perceptrons.
+
+
+Exercise 1.117:
+ 
+  Is it possible to find a perceptron $p:\mathbb{R}^2\rightarrow \mathbb{R}$, such that
+    $$\begin{aligned}
+    p(0,0) &= 0\\
+    p(1, 0) &= 1\\
+    p(0,1) &= 1\\
+     p(1, 1) &= 0?
+  \end{aligned}$$
+  What if you are allowed to use a neural network composed as $\mathbb{R}^2\rightarrow \mathbb{R}^2\rightarrow \mathbb{R}$ (one hidden layer)
+  ?
+  
+/Exercise
+
+Mathematically there is no reason to use special functions such as perceptrons in each node. One also uses
+  a (smooth) version of the perceptron employing the sigmoid function: https://en.wikipedia.org/wiki/Sigmoid_function.
+  With the notation above, this function is given as
+  $$
+  \sigma(x_1, \dots, x_n) = \frac{1}{1 + e^{-(w_1 x_1 + \cdots + w_n x_n) - b}}.
+  $$
+  However, around 2011 it was observed that the perceptron activation function (ReLU: https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) as defined in (1.23) led to better training
+  of deep neural networks.
+\end{rag}
