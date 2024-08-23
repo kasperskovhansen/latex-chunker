@@ -21,6 +21,7 @@ export interface ChunkMetadata {
   label?: string;
   parents?: string[];
   nooftokens?: number;
+  [key: string]: any;
 }
 
 // Initial state for editor
@@ -99,15 +100,15 @@ const editorSlice = createSlice({
       const { chunkIndex, metadataKey, newValue } = action.payload;
       if (state.parsedList[chunkIndex]) {
         const newParsedList = cloneDeep(state.parsedList);
-        newParsedList[chunkIndex].metadata[metadataKey] = newValue;
 
-        const newRawContent = unparseContent(newParsedList);
+        const metadata = newParsedList[chunkIndex].metadata;
+        if (metadata !== undefined && metadata.hasOwnProperty(metadataKey)) {
+          metadata[metadataKey] = newValue;
+          const newRawContent = unparseContent(newParsedList);
 
-        state.parsedList = newParsedList;
-        state.rawContent = newRawContent;
-
-        // state.parsedList[chunkIndex][metadataKey] = newValue;
-        // state.rawContent = unparseContent(state.parsedList);
+          state.parsedList = newParsedList;
+          state.rawContent = newRawContent;
+        }
       }
     },
 

@@ -1,10 +1,24 @@
-import { Descendant, createEditor } from "slate";
+// TypeScript users only add this code
+import { BaseEditor, Descendant } from "slate";
 import { Editable, Slate, withReact } from "slate-react";
+import { Transforms, createEditor } from "slate";
 import { selectRawContent, setRawContent } from "../app/store/editorSlice";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch } from "../app/store";
+import { ReactEditor } from "slate-react";
+
+type CustomElement = { type: "paragraph"; children: CustomText[] };
+type CustomText = { text: string };
+
+declare module "slate" {
+  interface CustomTypes {
+    Editor: BaseEditor & ReactEditor;
+    Element: CustomElement;
+    Text: CustomText;
+  }
+}
 
 export default function Editor() {
   const editor = useState(() => withReact(createEditor()))[0];
@@ -48,7 +62,7 @@ export default function Editor() {
 
   // Custom handler for the keydown event
   const handleKeyDown = useCallback(
-    (event) => {
+    (event: any) => {
       if (event.key === "Enter") {
         event.preventDefault();
 

@@ -1,6 +1,6 @@
 import { Chunk, ChunkMetadata } from "../store/editorSlice";
 
-import { Descendant } from "slate";
+import { Element } from "slate";
 import { chunk } from "lodash";
 
 // Regex to match \begin{rag}[metadata] ... content ... \end{rag}
@@ -38,7 +38,7 @@ export const extractRagChunks = (latexText: string): Chunk[] => {
 };
 
 export const extractChunksFromDescendants = (
-  slateValue: Descendant[]
+  slateValue: Element[]
 ): { chunks: Chunk[]; foundNewSubChunks: boolean } => {
   const chunks: Chunk[] = [];
   let foundNewSubChunks = false;
@@ -53,7 +53,7 @@ export const extractChunksFromDescendants = (
 };
 
 // Function to extract metadata and content from the LaTeX document
-export const extractRagChunks2 = (slateDescendant: Descendant): Chunk[] => {
+export const extractRagChunks2 = (slateDescendant: Element): Chunk[] => {
   const chunks: Chunk[] = [];
   let match;
 
@@ -87,14 +87,12 @@ const rebuildMetadata = (metadata: ChunkMetadata) => {
   if (metadata === undefined) {
     return "";
   }
-  const metadataObject = {};
+  const metadataObject: ChunkMetadata = {};
   for (const [key, value] of Object.entries(metadata)) {
     if (["title", "type", "label"].includes(key)) {
       metadataObject[key] = `"${value}"`;
     } else if (key === "parents") {
       metadataObject[key] = `"${value}"`;
-    } else if (key === "nooftokens") {
-      metadataObject[key] = `${value}`;
     } else if (key === "nooftokens") {
       metadataObject[key] = `${value}`;
     }
@@ -109,7 +107,7 @@ const rebuildMetadata = (metadata: ChunkMetadata) => {
   );
 };
 
-export const rebuildDescandants = (chunks: Chunk[]): Descendant[] => {
+export const rebuildDescandants = (chunks: Chunk[]): Element[] => {
   return chunks.map((chunk) => {
     return {
       type: "paragraph",
