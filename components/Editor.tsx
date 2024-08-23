@@ -1,6 +1,5 @@
-import { Descendant, Transforms, createEditor } from "slate";
+import { Descendant, createEditor } from "slate";
 import { Editable, Slate, withReact } from "slate-react";
-import { debounce, difference, throttle } from "lodash";
 import { selectRawContent, setRawContent } from "../app/store/editorSlice";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,32 +15,13 @@ export default function Editor() {
 
   // Handle editor changes and update the raw content in Redux
   const handleValueChange = (value: Descendant[]) => {
-    // Convert Slate nodes to plain text
-    console.log("handleValueChange");
-    console.log(JSON.parse(JSON.stringify(rawContent)));
-    console.log(JSON.parse(JSON.stringify(value)));
-    if (JSON.stringify(rawContent) === JSON.stringify(value)) {
-      console.log("return from handleValueChange");
-      return;
-    }
-    // difference(rawContent, value).forEach((node: any) => {
-    //   console.log(node);
-    // });
-    const newText = value.map((node: any) => node.children[0].text).join("\n");
-    dispatch(setRawContent(newText));
+    console.log("handleValueChange", value);
+    dispatch(setRawContent(value));
   };
 
   // Update the editor's content when rawContent changes
   useEffect(() => {
-    // Convert rawContent into Slate nodes
-    const editorValue: Descendant[] = rawContent
-      ? rawContent.split("\n").map((line) => ({
-          type: "paragraph",
-          children: [{ text: line }],
-        }))
-      : [];
-
-    editor.children = editorValue;
+    editor.children = rawContent;
     editor.onChange();
   }, [rawContent, editor]); // Dependency array includes editor and rawContent
 
@@ -50,7 +30,9 @@ export default function Editor() {
     fetch("/editor-default-content.txt")
       .then((response) => response.text()) // Convert the response to text
       .then((text) => {
-        dispatch(setRawContent(text));
+        dispatch(
+          setRawContent([{ type: "paragraph", children: [{ text: text }] }])
+        );
       })
       .catch((error) => {
         console.error("Error fetching the text file:", error);
@@ -64,13 +46,26 @@ export default function Editor() {
     },
   ];
 
+  // Custom handler for the keydown event
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        // Insert a soft line break
+        editor.insertText("\n");
+      }
+    },
+    [editor]
+  );
+
   return (
     <Slate
       editor={editor}
       initialValue={initialValue}
       onValueChange={handleValueChange}
     >
-      <Editable />
+      <Editable onKeyDown={handleKeyDown} />
     </Slate>
   );
 }

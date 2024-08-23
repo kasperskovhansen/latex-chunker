@@ -1,9 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
+  extractChunksFromDescendants,
   extractRagChunks,
-  parseLatex,
-  parseLatexChunks,
-  rebuildLatexDocument,
+  rebuildDescandants,
 } from "../util/latex-parser";
 
 import { Descendant } from "slate";
@@ -26,12 +25,14 @@ export interface ChunkMetadata {
 
 // Initial state for editor
 interface EditorState {
-  rawContent: string; // Raw text content
+  rawContent: Descendant[]; // Raw content from editor
   parsedList: Chunk[]; // List extracted from rawContent
 }
 
 const initialState: EditorState = {
-  rawContent: "Loading content...", // Initial empty content
+  rawContent: [
+    { type: "paragraph", children: [{ text: "Loading content..." }] },
+  ], // Initial empty content
   parsedList: [
     {
       content: "Loading content...",
@@ -45,12 +46,18 @@ const editorSlice = createSlice({
   initialState,
   reducers: {
     // Action to update raw content (from editor)
-    setRawContent(state, action: PayloadAction<string>) {
+    setRawContent(state, action: PayloadAction<Descendant[]>) {
       // Only update if rawContent has changed
       if (state.rawContent !== action.payload) {
         state.rawContent = action.payload;
         // Parse rawContent into a list of chunks
-        state.parsedList = parseContent(action.payload);
+        const { chunks, foundNewSubChunks } = extractChunksFromDescendants(
+          action.payload
+        );
+        state.parsedList = chunks;
+        if (foundNewSubChunks) {
+          state.rawContent = unparseContent(chunks);
+        }
       }
     },
 
@@ -118,8 +125,8 @@ export const parseContent = (rawContent: string): Chunk[] => {
 };
 
 // Unparser function to convert list back to raw content
-export const unparseContent = (parsedList: Chunk[]): string => {
-  return rebuildLatexDocument(parsedList);
+export const unparseContent = (parsedList: Chunk[]): Descendant[] => {
+  return rebuildDescandants(parsedList);
 };
 
 // Selector to get raw content from the store
