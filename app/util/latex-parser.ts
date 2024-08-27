@@ -20,19 +20,25 @@ export const extractChunksFromDescendants = (
     chunks.push(...subChunks);
   }
   // Assign a color to each chunk. The colors should be visually distinct. It should still be easy to read white text on top of the color. Also assign appropriate text colors based on the background color. (black or white)
-  const colors = [
-    { background: "#FFC0CB", text: "black" },
-    { background: "#FFD700", text: "black" },
-    { background: "#FF6347", text: "black" },
-    { background: "#FFA07A", text: "black" },
-    { background: "#FF4500", text: "black" },
-    { background: "#FF8C00", text: "black" },
-    { background: "#FF69B4", text: "black" },
-    { background: "#FF1493", text: "black" },
+  const colorPairs = [
+    { color: "#F0F0F0", backgroundColor: "#2C2C2C" }, // Light Gray on Dark Gray
+    { color: "#2C2C2C", backgroundColor: "#D4AF37" }, // Dark Gray on Soft Gold
+    { color: "#F0F0F0", backgroundColor: "#567D46" }, // Light Gray on Olive Green
+    { color: "#F0F0F0", backgroundColor: "#3C6E91" }, // Light Gray on Muted Blue
+    { color: "#2C2C2C", backgroundColor: "#D16D58" }, // Dark Gray on Soft Red-Orange
+    { color: "#F0F0F0", backgroundColor: "#5D4E8B" }, // Light Gray on Soft Indigo
+    { color: "#2C2C2C", backgroundColor: "#D993B5" }, // Dark Gray on Soft Pink
+    { color: "#F0F0F0", backgroundColor: "#5A3A3A" }, // Light Gray on Soft Maroon
+    { color: "#2C2C2C", backgroundColor: "#E1C16E" }, // Dark Gray on Soft Yellow
+    { color: "#F0F0F0", backgroundColor: "#804040" }, // Light Gray on Muted Dark Red
+    { color: "#2C2C2C", backgroundColor: "#9ACD32" }, // Dark Gray on Soft Yellow Green
+    { color: "#F0F0F0", backgroundColor: "#E2934E" }, // Light Gray on Soft Orange
   ];
+
   chunks.forEach((chunk, index) => {
-    chunk.backgroundColor = colors[index % colors.length].background;
-    chunk.color = colors[index % colors.length].text;
+    chunk.backgroundColor =
+      colorPairs[index % colorPairs.length].backgroundColor;
+    chunk.color = colorPairs[index % colorPairs.length].color;
     chunk.id = index;
   });
   return { chunks, foundNewSubChunks };

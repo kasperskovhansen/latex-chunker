@@ -84,6 +84,7 @@ const editorSlice = createSlice({
           parents: [],
           nooftokens: 0,
         },
+        id: state.parsedList.length,
       };
       const newParsedList = [...state.parsedList, newChunk];
       state.parsedList = newParsedList;

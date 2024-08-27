@@ -11,7 +11,10 @@ const Leaf = ({ attributes, children, leaf }) => {
       className="px-2"
     >
       <span
-        style={{ color: leaf?.chunk?.color ? leaf.chunk.color : "inherit" }}
+        style={{
+          color: leaf?.chunk?.color ? leaf.chunk.color : "inherit",
+          counterIncrement: "line",
+        }}
       >
         {children}
       </span>
