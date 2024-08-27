@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
   extractChunksFromDescendants,
-  extractRagChunks,
   rebuildDescandants,
 } from "../util/latex-parser";
 
@@ -11,8 +10,11 @@ import { cloneDeep } from "lodash";
 
 // Chunk type for list items
 export interface Chunk {
+  id?: number;
   content?: string;
   metadata?: ChunkMetadata;
+  backgroundColor?: string;
+  color?: string;
 }
 
 export interface ChunkMetadata {
@@ -119,11 +121,6 @@ const editorSlice = createSlice({
     },
   },
 });
-
-// Parser function to extract list from raw content
-export const parseContent = (rawContent: string): Chunk[] => {
-  return extractRagChunks(rawContent);
-};
 
 // Unparser function to convert list back to raw content
 export const unparseContent = (parsedList: Chunk[]): Descendant[] => {

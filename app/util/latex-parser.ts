@@ -7,53 +7,39 @@ import { chunk } from "lodash";
 const ragRegex = /\\begin{rag}\[(.*?)\]\s*([\s\S]*?)\\end{rag}/gs;
 
 // Function to extract metadata and content from the LaTeX document
-export const extractRagChunks = (latexText: string): Chunk[] => {
-  const chunks = [];
-  let match;
-
-  // Iterate through all rag environments in the document
-  while ((match = ragRegex.exec(latexText)) !== null) {
-    const metadataString = match[1]; // Metadata part
-    const content = match[2].trim(); // Content part
-
-    // Parse metadata into key-value pairs
-    const metadata: ChunkMetadata = {};
-
-    metadataString.split(",").forEach((meta) => {
-      if (meta === "") {
-        return;
-      }
-      const [key, value] = meta.split("=");
-      if (value === undefined) {
-        return;
-      }
-      metadata[key.trim()] = value.trim().replace(/^"(.*)"$/, "$1");
-    });
-
-    // Add the extracted chunk (metadata + content) to the result array
-    chunks.push({ metadata, content });
-  }
-
-  return chunks;
-};
-
 export const extractChunksFromDescendants = (
   slateValue: Element[]
 ): { chunks: Chunk[]; foundNewSubChunks: boolean } => {
   const chunks: Chunk[] = [];
   let foundNewSubChunks = false;
   for (const node of slateValue) {
-    const subChunks = extractRagChunks2(node);
+    const subChunks = extractRagChunks(node);
     if (subChunks.length > 1) {
       foundNewSubChunks = true;
     }
     chunks.push(...subChunks);
   }
+  // Assign a color to each chunk. The colors should be visually distinct. It should still be easy to read white text on top of the color. Also assign appropriate text colors based on the background color. (black or white)
+  const colors = [
+    { background: "#FFC0CB", text: "black" },
+    { background: "#FFD700", text: "black" },
+    { background: "#FF6347", text: "black" },
+    { background: "#FFA07A", text: "black" },
+    { background: "#FF4500", text: "black" },
+    { background: "#FF8C00", text: "black" },
+    { background: "#FF69B4", text: "black" },
+    { background: "#FF1493", text: "black" },
+  ];
+  chunks.forEach((chunk, index) => {
+    chunk.backgroundColor = colors[index % colors.length].background;
+    chunk.color = colors[index % colors.length].text;
+    chunk.id = index;
+  });
   return { chunks, foundNewSubChunks };
 };
 
 // Function to extract metadata and content from the LaTeX document
-export const extractRagChunks2 = (slateDescendant: Element): Chunk[] => {
+const extractRagChunks = (slateDescendant: Element): Chunk[] => {
   const chunks: Chunk[] = [];
   let match;
 
@@ -116,6 +102,7 @@ export const rebuildDescandants = (chunks: Chunk[]): Element[] => {
           text: `\\begin{rag}[${rebuildMetadata(chunk.metadata)}]
 ${chunk.content}
 \\end{rag}`,
+          chunk,
         },
       ],
     };

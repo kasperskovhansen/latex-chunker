@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch } from "../app/store";
+import Leaf from "./Leaf";
 import { ReactEditor } from "slate-react";
 
 type CustomElement = { type: "paragraph"; children: CustomText[] };
@@ -79,7 +80,10 @@ export default function Editor() {
       initialValue={initialValue}
       onValueChange={handleValueChange}
     >
-      <Editable onKeyDown={handleKeyDown} />
+      <Editable
+        onKeyDown={handleKeyDown}
+        renderLeaf={(props) => <Leaf {...props} />}
+      />
     </Slate>
   );
 }
