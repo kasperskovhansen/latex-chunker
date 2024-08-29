@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Backlog
+
+- <input type="checkbox">Clean up project</input>
+- <input type="checkbox">Add feature to scroll to parents</input>
+- <input type="checkbox">Add feature to hover and preview parent chunks</input>
+- <input type="checkbox">Add feature to get a list of options with titles and labels when adding parents</input>
+- <input type="checkbox">Identify parsed chunks by title</input>
+- <input type="checkbox">Ensure chunks don't change color when moved around or the title is changed through the sidebar</input>

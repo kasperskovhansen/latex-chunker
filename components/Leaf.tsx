@@ -1,4 +1,5 @@
-const Leaf = ({ attributes, children, leaf }) => {
+import { RenderLeafProps } from "slate-react";
+const Leaf = ({ attributes, children, leaf }: RenderLeafProps) => {
   return (
     <div
       id={`chunk-${leaf.chunk?.id}`}

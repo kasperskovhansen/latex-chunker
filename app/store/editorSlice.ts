@@ -4,7 +4,7 @@ import {
   rebuildDescandants,
 } from "../util/latex-parser";
 
-import { Descendant } from "slate";
+import { CustomElement } from "@/components/Editor";
 import { RootState } from "./index";
 import { cloneDeep } from "lodash";
 
@@ -28,19 +28,19 @@ export interface ChunkMetadata {
 
 // Initial state for editor
 interface EditorState {
-  rawContent: Descendant[]; // Raw content from editor
+  rawContent: CustomElement[]; // Raw content from editor
   parsedList: Chunk[]; // List extracted from rawContent
 }
 
 const initialState: EditorState = {
   rawContent: [
-    { type: "paragraph", children: [{ text: "Loading content..." }] },
+    // { type: "paragraph", children: [{ text: "Loading content..." }] },
   ], // Initial empty content
   parsedList: [
-    {
-      content: "Loading content...",
-      metadata: { title: "Loading content..." },
-    },
+    // {
+    //   content: "Loading content...",
+    //   metadata: { title: "Loading content..." },
+    // },
   ], // Initial empty list
 };
 
@@ -49,7 +49,7 @@ const editorSlice = createSlice({
   initialState,
   reducers: {
     // Action to update raw content (from editor)
-    setRawContent(state, action: PayloadAction<Descendant[]>) {
+    setRawContent(state, action: PayloadAction<CustomElement[]>) {
       // Only update if rawContent has changed
       if (state.rawContent !== action.payload) {
         state.rawContent = action.payload;
@@ -58,7 +58,7 @@ const editorSlice = createSlice({
           action.payload
         );
         state.parsedList = chunks;
-        if (foundNewSubChunks) {
+        if (foundNewSubChunks || state.parsedList.length === 0) {
           state.rawContent = unparseContent(chunks);
         }
       }
@@ -124,7 +124,7 @@ const editorSlice = createSlice({
 });
 
 // Unparser function to convert list back to raw content
-export const unparseContent = (parsedList: Chunk[]): Descendant[] => {
+export const unparseContent = (parsedList: Chunk[]): CustomElement[] => {
   return rebuildDescandants(parsedList);
 };
 

@@ -1,14 +1,13 @@
 import { Chunk, ChunkMetadata } from "../store/editorSlice";
 
-import { Element } from "slate";
-import { chunk } from "lodash";
+import { CustomElement } from "@/components/Editor";
 
 // Regex to match \begin{rag}[metadata] ... content ... \end{rag}
 const ragRegex = /\\begin{rag}\[(.*?)\]\s*([\s\S]*?)\\end{rag}/gs;
 
 // Function to extract metadata and content from the LaTeX document
 export const extractChunksFromDescendants = (
-  slateValue: Element[]
+  slateValue: CustomElement[]
 ): { chunks: Chunk[]; foundNewSubChunks: boolean } => {
   const chunks: Chunk[] = [];
   let foundNewSubChunks = false;
@@ -45,11 +44,13 @@ export const extractChunksFromDescendants = (
 };
 
 // Function to extract metadata and content from the LaTeX document
-const extractRagChunks = (slateDescendant: Element): Chunk[] => {
+const extractRagChunks = (slateElement: CustomElement): Chunk[] => {
   const chunks: Chunk[] = [];
   let match;
 
-  const text = slateDescendant.children[0].text;
+  const text = slateElement.children[0].text;
+
+  // console.log("extractRagChunks: text", text);
   // Iterate through all rag environments in the document
   while ((match = ragRegex.exec(text)) !== null) {
     const metadataString = match[1]; // Metadata part
@@ -62,50 +63,86 @@ const extractRagChunks = (slateDescendant: Element): Chunk[] => {
       if (meta === "") {
         return;
       }
-      const [key, value] = meta.split("=");
+      let [key, value] = meta.split("=");
+      key = key.trim();
       if (value === undefined) {
         return;
       }
-      metadata[key.trim()] = value.trim().replace(/^"(.*)"$/, "$1");
-    });
+      let parsedValue = value.trim().replace(/^"(.*)"$/, "$1");
+      let finalValue: any;
 
+      if (key == "parents") {
+        const match = parsedValue.match(/^\{(.*?)\}$/);
+        if (match) {
+          // If the matched group is empty, return an empty array.
+          if (match[1] === "") {
+            finalValue = [];
+          } else {
+            // Split the values by commas and return the array.
+            finalValue = match[1].split(",");
+          }
+        } else {
+          finalValue = [];
+        }
+      } else if (key === "nooftokens") {
+        finalValue = parseInt(parsedValue);
+      } else {
+        finalValue = parsedValue;
+      }
+      metadata[key.trim()] = finalValue;
+    });
     // Add the extracted chunk (metadata + content) to the result array
     chunks.push({ metadata, content });
   }
+
+  // console.log("extractRagChunks: chunks", chunks);
   return chunks;
 };
 
-const rebuildMetadata = (metadata: ChunkMetadata) => {
+const rebuildMetadata = (metadata?: ChunkMetadata): string => {
+  console.log("rebuildMetadata: metadata", metadata);
   if (metadata === undefined) {
     return "";
   }
-  const metadataObject: ChunkMetadata = {};
+  const metadataObject: any = {};
   for (const [key, value] of Object.entries(metadata)) {
-    if (["title", "type", "label"].includes(key)) {
-      metadataObject[key] = `"${value}"`;
-    } else if (key === "parents") {
-      metadataObject[key] = `"${value}"`;
-    } else if (key === "nooftokens") {
-      metadataObject[key] = `${value}`;
+    const trimmedKey = key.trim();
+    if (["title", "type", "label"].includes(trimmedKey)) {
+      metadataObject[trimmedKey] = `"${value}"`;
+    } else if (trimmedKey == "parents") {
+      if (value.length == 0) {
+        metadataObject[trimmedKey] = `"{}"`;
+      } else {
+        let typedValue = value;
+        if (!Array.isArray(value)) {
+          typedValue = [];
+        }
+        const parents = typedValue.map((parent: string) => `${parent}`);
+        metadataObject[trimmedKey] = `"{${parents.join(",")}}"`;
+      }
+    } else if (trimmedKey === "nooftokens") {
+      metadataObject[trimmedKey] = value;
     }
   }
 
-  return (
+  const result =
     "\n" +
     Object.entries(metadataObject)
       .map(([key, value]) => `${key}=${value}`)
       .join(",\n") +
-    "\n"
-  );
+    "\n";
+
+  console.log("rebuildMetadata: result", result);
+  return result;
 };
 
-export const rebuildDescandants = (chunks: Chunk[]): Element[] => {
+export const rebuildDescandants = (chunks: Chunk[]): CustomElement[] => {
   return chunks.map((chunk) => {
     return {
       type: "paragraph",
       children: [
         {
-          text: `\\begin{rag}[${rebuildMetadata(chunk.metadata)}]
+          text: `\\begin{rag}[${rebuildMetadata(chunk?.metadata)}]
 ${chunk.content}
 \\end{rag}`,
           chunk,
@@ -116,11 +153,5 @@ ${chunk.content}
 };
 
 export const rebuildLatexDocument = (chunks: Chunk[]) => {
-  return chunks
-    .map((chunk) => {
-      return `\\begin{rag}[${rebuildMetadata(chunk.metadata)}]
-${chunk.content}
-\\end{rag}`;
-    })
-    .join("\n");
+  return rebuildDescandants(chunks);
 };
