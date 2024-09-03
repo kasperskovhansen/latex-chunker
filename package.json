@@ -16,6 +16,7 @@
     "react-dom": "^18",
     "react-redux": "^9.1.2",
     "slate": "^0.103.0",
+    "slate-history": "^0.109.0",
     "slate-react": "^0.108.0"
   },
   "devDependencies": {

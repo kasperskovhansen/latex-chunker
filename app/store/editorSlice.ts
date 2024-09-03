@@ -51,14 +51,20 @@ const editorSlice = createSlice({
     // Action to update raw content (from editor)
     setRawContent(state, action: PayloadAction<CustomElement[]>) {
       // Only update if rawContent has changed
-      if (state.rawContent !== action.payload) {
-        state.rawContent = action.payload;
+      const actionPayload = JSON.parse(JSON.stringify(action.payload));
+      if (JSON.stringify(state.rawContent) != JSON.stringify(action.payload)) {
+        // state.rawContent = action.payload;
         // Parse rawContent into a list of chunks
         const { chunks, foundNewSubChunks } = extractChunksFromDescendants(
           action.payload
         );
-        state.parsedList = chunks;
-        if (foundNewSubChunks || state.parsedList.length === 0) {
+        console.log("foundNewSubChunks: ", foundNewSubChunks);
+        const newRawContent = unparseContent(chunks);
+        if (
+          JSON.stringify(state.rawContent) != JSON.stringify(newRawContent) ||
+          foundNewSubChunks
+        ) {
+          state.parsedList = chunks;
           state.rawContent = unparseContent(chunks);
         }
       }
@@ -66,6 +72,7 @@ const editorSlice = createSlice({
 
     // Action to update parsed list (from sidebar)
     setParsedList(state, action: PayloadAction<Chunk[]>) {
+      console.log("setParsedList: ", action.payload);
       // Only update if parsedList has changed
       const newParsedList = action.payload;
       state.parsedList = newParsedList;

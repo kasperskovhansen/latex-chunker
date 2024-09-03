@@ -100,7 +100,6 @@ const extractRagChunks = (slateElement: CustomElement): Chunk[] => {
 };
 
 const rebuildMetadata = (metadata?: ChunkMetadata): string => {
-  console.log("rebuildMetadata: metadata", metadata);
   if (metadata === undefined) {
     return "";
   }
@@ -132,24 +131,25 @@ const rebuildMetadata = (metadata?: ChunkMetadata): string => {
       .join(",\n") +
     "\n";
 
-  console.log("rebuildMetadata: result", result);
   return result;
 };
 
 export const rebuildDescandants = (chunks: Chunk[]): CustomElement[] => {
-  return chunks.map((chunk) => {
+  const rebuiltEditorContent = chunks.map((chunk) => {
     return {
       type: "paragraph",
       children: [
         {
           text: `\\begin{rag}[${rebuildMetadata(chunk?.metadata)}]
-${chunk.content}
-\\end{rag}`,
+  ${chunk.content}
+  \\end{rag}`,
           chunk,
         },
       ],
-    };
+    } as CustomElement;
   });
+  console.trace("rebuiltEditorContent", rebuiltEditorContent);
+  return rebuiltEditorContent;
 };
 
 export const rebuildLatexDocument = (chunks: Chunk[]) => {

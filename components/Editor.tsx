@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../app/store";
 import Leaf from "./Leaf";
 import { ReactEditor } from "slate-react";
+import { withHistory } from "slate-history";
 
 export type CustomElement = { type: "paragraph"; children: CustomText[] };
 export type CustomText = { text: string; chunk?: Chunk };
@@ -24,7 +25,7 @@ declare module "slate" {
 }
 
 export default function Editor() {
-  const editor = useState(() => withReact(createEditor()))[0];
+  const editor = useState(() => withReact(withHistory(createEditor())))[0];
   const rawContent = useSelector(selectRawContent);
   const dispatch = useDispatch<AppDispatch>();
   const initialValue: Descendant[] = [
@@ -45,7 +46,7 @@ export default function Editor() {
       .catch((error) => {
         console.error("Error fetching the text file:", error);
       });
-  });
+  }, []);
 
   useEffect(() => {
     // console.log("rawContent", JSON.parse(JSON.stringify(rawContent)));
