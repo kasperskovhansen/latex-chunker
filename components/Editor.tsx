@@ -36,7 +36,7 @@ export default function Editor() {
   ];
 
   useEffect(() => {
-    fetch("/editor-default-content.txt")
+    fetch("/editor-default-content-full.txt")
       .then((response) => response.text())
       .then((text) => {
         dispatch(

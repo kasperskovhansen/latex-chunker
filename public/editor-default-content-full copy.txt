@@ -1,9 +1,8 @@
 \begin{rag}[
-id="intro#prompting",
 title="The art of prompting",
 type="content",
-keywords={"prompting", "Section 1.1"},
-parents={},
+label="prompting",
+parents="{}",
 nooftokens = 580
 ]
 Section 1.1: The art of prompting
@@ -58,11 +57,10 @@ Good prompting comes from an understanding of the mathematics and often resemble
 and beautifully written instructions.
 \end{rag}
 \begin{rag}[
-id="intro#promptingtutor",
 title="Exercise on prompting llm to act like a tutor",
 type="exercise",
-keywords={"tutor", "Exercise 1.1"},
-parents={"intro#prompting"},
+label="promptingtutor",
+parents="{prompting}",
 nooftokens = 96
 ]
 Exercise 1.1:
@@ -79,11 +77,10 @@ Please act like a friendly tutor and teach me about the derivatives of simple fu
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#latexprompt",
 title="Exercise on prompting for LaTeX instructions",
 type="exercise",
-keywords={"Exercise 1.2"},
-parents={"intro#prompting"},
+label="latexprompt",
+parents="{prompting}",
 nooftokens = 122
 ]
 Exercise 1.2:
@@ -102,11 +99,10 @@ Come up with your own prompt for a question related to software.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#feedbackprompt",
 title="Exercise on prompting for feedback",
 type="exercise",
-keywords={"feedback", "Exercise 1.3"},
-parents={"intro#prompting"},
+label="feedbackprompt",
+parents="{prompting}",
 nooftokens = 114
 ]
 Exercise 1.3:
@@ -127,11 +123,10 @@ Insert your own mathematics in $\LaTeX$ notation and ask for feedback in a promp
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#howtostudy",
 title="How to study",
 type="content",
-keywords={"study", "hours", "Section 1.2"},
-parents={},
+label="howtostudy",
+parents="{}",
 nooftokens = 360
 ]
 Section 1.2: Black box warnings
@@ -158,11 +153,10 @@ of the 10 ECTS. Please schedule a weekly study plan for me along with a plan for
 \end{prompting}
 \end{rag}
 \begin{rag}[
-id="intro#wolframalpha",
 title="Exercise on correcting WolframAlpha error",
 type="exercise",
-keywords={"Wolfram Alpha", "Computer algebra", "Exercise 1.4"},
-parents={"intro#prompting"},
+label="wolframalpha",
+parents="{prompting}",
 nooftokens = 153
 ]
 Exercise 1.4:
@@ -190,11 +184,10 @@ chatbot) to explain what the proper output should have been.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#computeralgebra",
 title="Introducing Sage and python for computer algebra",
 type="content",
-keywords={"sage", "python", "computer algebra", "CAS"},
-parents={},
+label="computeralgebra",
+parents="{}",
 nooftokens = 287
 ]
 We will use the computer algebra system
@@ -228,11 +221,10 @@ You can install Sage on your own computer following the instructions on
 https://www.sagemath.org/: https://www.sagemath.org/.
 \end{rag}
 \begin{rag}[
-id="intro#sageexercise",
 title="Exercise introducing Sage",
 type="exercise",
-keywords={"Sage", "Exercise 1.5"},
-parents={"intro#computeralgebra"},
+label="sageexercise",
+parents="{computeralgebra}",
 nooftokens = 267
 ]
 Exercise 1.5:
@@ -259,11 +251,10 @@ Give me the sage code to compute pi with 100 decimals. I want a one line command
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#rewritingsum",
 title="Exercise on rewriting sum",
 type="exercise",
-keywords={"Exercise 1.6"},
-parents={},
+label="rewritingsum",
+parents="{}",
 nooftokens = 184
 ]
 Exercise 1.6:
@@ -286,11 +277,10 @@ for $N = 5, 6, 7, \dots$.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#setsdefinition",
 title="Definition of sets",
 type="content",
-keywords={"set"},
-parents={},
+label="setsdefinition",
+parents="{}",
 nooftokens = 224
 ]
 A set is a collection of (mathematical) objects or elements. When defining a set we use the symbols $\{$
@@ -305,11 +295,10 @@ are identical sets. If $S$ is a set, we will use the notation $x\in S$ to denote
 that $x$ is an element in $S$. For example, e$\in \{\text{N, i, e, l, s}\}$.
 \end{rag}
 \begin{rag}[
-id="intro#naturalnumbersandintegers",
 title="Natural numbers and integers",
 type="content",
-keywords={"natural numbers", "integers", "multiplication"},
-parents={"intro#setsdefinition"},
+label="naturalnumbersandintegers",
+parents="{setsdefinition}",
 nooftokens = 541
 ]
 Subsection 1.4.1: The natural numbers $\mathbb{N}$ and the integers $\mathbb{Z}$
@@ -351,11 +340,10 @@ for example $7$ times $9$ is written as $7\cdot 9$ and $a$ times $3$ is written
 $a\cdot 3$.
 \end{rag}
 \begin{rag}[
-id="intro#rationalnumbers",
 title="Rational numbers",
 type="content",
-keywords = {"rational numbers", "fractions", "rationals", "Definition 1.7", "Example 1.8"},
-parents={"intro#naturalnumbersandintegers"},
+label="rationalnumbers",
+parents="{naturalnumbersandintegers}",
 nooftokens = 605
 ]
 Subsection 1.4.2: The rational numbers $\mathbb{Q}$
@@ -417,11 +405,10 @@ $$
 $$
 \end{rag}
 \begin{rag}[
-id="intro#addingfractions",
 title="Exercise on adding fractions",
 type="exercise",
-keywords={"Quizexercise 1.9"},
-parents={"intro#rationalnumbers"},
+label="addingfractions",
+parents="{rationalnumbers}",
 nooftokens = 162
 ]
 Quizexercise 1.9:
@@ -450,11 +437,10 @@ $$
 /Quizexercise
 \end{rag}
 \begin{rag}[
-id="intro#realnumbers",
 title="Real numbers",
 type="content",
-keywords={"real numbers", "decimals", "irrational", "algebraic number", "transcendent", "Definition 1.10"},
-parents={"intro#naturalnumbersandintegers#", "#intro#rationalnumbers"},
+label="realnumbers",
+parents="{naturalnumbersandintegers, rationalnumbers}",
 nooftokens = 749
 ]
 Subsection 1.4.3: The real numbers $\mathbb{R}$
@@ -514,11 +500,10 @@ integer coefficients (it is an algebraic number: https://en.wikipedia.org/wiki/A
 $e$ and $\pi$ are not even algebraic (they are transcendental: https://en.wikipedia.org/wiki/Transcendental_number).
 \end{rag}
 \begin{rag}[
-id="intro#promptingnumberhistoryandperiodicity",
 title="Exercise on prompting for history of numbers and periodicity of rational numbers",
 type="exercise",
-keywords={"Exercise 1.11"},
-parents={"intro#realnumbers"},
+label="promptingnumberhistoryandperiodicity",
+parents="{realnumbers}",
 nooftokens = 35
 ]
 Exercise 1.11:
@@ -529,11 +514,10 @@ explain why a rational number must have a periodic decimal expansion.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#arithmeticfornumbers",
 title="Arithmetic rules for numbers",
 type="content",
-keywords={"associative", "distributive", "Proposition 1.12", "Exercise 1.13"},
-parents={"intro#naturalnumbersandintegers", "intro#rationalnumbers", "intro#realnumbers"},
+label="arithmeticfornumbers",
+parents="{naturalnumbersandintegers, rationalnumbers, realnumbers}",
 nooftokens = 636
 ]
 Subsection 1.4.4: Arithmetic rules for numbers
@@ -591,11 +575,10 @@ The rule ((vi.)) is called the *distributive* law.
 It connects multiplication with addition.
 \end{rag}
 \begin{rag}[
-id="intro#adding0",
 title="Exercise on adding 0",
 type="exercise",
-keywords={"Exercise 1.14"},
-parents={"intro#arithmeticfornumbers"},
+label="adding0",
+parents="{arithmeticfornumbers}",
 nooftokens = 44
 ]
 Exercise 1.14:
@@ -606,11 +589,10 @@ Proposition (1.12) starting with $0 + 0 = 0$.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#distributivelaw",
 title="Exercise on distributive law and space for multiplication",
 type="exercise",
-keywords={"Exercise 1.15"},
-parents={"intro#arithmeticfornumbers"},
+label="distributivelaw",
+parents="{arithmeticfornumbers}",
 nooftokens = 52
 ]
 Exercise 1.15:
@@ -622,11 +604,10 @@ accepts space (between numbers and variables) as multiplication.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#distributivelawoptimizemultiplication",
 title="Exercise on using distributive law for optimzing number of multiplications",
 type="exercise",
-keywords={"Exercise 1.16"},
-parents={"intro#arithmeticfornumbers"},
+label="distributivelawoptimizemultiplication",
+parents="{arithmeticfornumbers}",
 nooftokens = 80
 ]
 Exercise 1.16:
@@ -639,11 +620,10 @@ $w$ with only one multiplication and one addition?
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#distributivelawmoveout",
 title="Distributive law to move factor out",
 type="exercise",
-keywords={"Exercise 1.17"},
-parents={"intro#arithmeticfornumbers"},
+label="distributivelawmoveout",
+parents="{arithmeticfornumbers}",
 nooftokens = 47
 ]
 Exercise 1.17:
@@ -656,11 +636,10 @@ $$
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#propositionallogic",
-title="Propositional logic",
+title="Proposition logic",
 type="content",
-keywords={"truth table", "Section 1.5", "Definition 1.18"}, 
-parents={},
+label="propositional logic",
+parents="{}",
 nooftokens = 787
 ]
 Section 1.5: Propositional logic
@@ -756,11 +735,10 @@ many explanations available online and,
 perhaps more importantly, refer you to Exercise {?}excolorcards{/?}.
 \end{rag}
 \begin{rag}[
-id="intro#exercisespropositionallogic",
 title="Exercises on propostional logic",
 type="exercise",
-keywords={"cards", "prosecutor", "Exercise 1.19", "Exercise 1.20"},
-parents={"intro#propositionallogic"},
+label="exercisespropositionallogic",
+parents="{propositionallogic}",
 nooftokens = 312
 ]
 Exercise 1.19:
@@ -803,11 +781,10 @@ Explain why the defendant should not answer "no, that is not true" here.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#logicpythonbehavior",
 title="Exercise on python behavior for logic",
 type="exercise",
-keywords={"Exercise 1.21"},
-parents={"intro#computeralgebra"},
+label="logicpythonbehavior",
+parents="{computeralgebra}",
 nooftokens = 58
 ]
 Exercise 1.21:
@@ -821,11 +798,10 @@ is False! Notice that you are dividing one by zero in the last "integer" above.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#propositionallanguageasaformallanguage",
 title="",
 type="content",
-keywords={"formal language", "Definition 1.22", "Example 1.23"},
-parents={"intro#propositionallogic"},
+label="propositionallanguageasaformallanguage",
+parents="{propositionallogic}",
 nooftokens = 549
 ]
 Subsection 1.5.1: Propositional logic as a formal language
@@ -877,11 +853,10 @@ is a proposition, since we know by ((3.)) that $Q$ is a proposition.
 /Example
 \end{rag}
 \begin{rag}[
-id="intro#formallogicquizexercise",
 title="Exercise on propositional logic as a formal language",
 type="exercise",
-keywords={"Quizexercise 1.24"},
-parents={"intro#propositionallogicasaformallanguage"},
+label="formallogicquizexercise",
+parents="{propositionallogicasaformallanguage}",
 nooftokens = 160
 ]
 Quizexercise 1.24:
@@ -907,11 +882,10 @@ $((\neg x_1) \implies x_2)$
 /Quizexercise
 \end{rag}
 \begin{rag}[
-id="intro#truthtables",
 title="",
 type="content",
-keywords={"truth tables", "equivalent propositions", "Example 1.25", "Definition 1.26"},
-parents={"intro#propositionallogic", "intro#computeralgebra"},
+label="truthtables",
+parents="{propositionallogic, computeralgebra}",
 nooftokens = 950
 ]
 Subsection 1.5.2: Truth tables and equivalent propositions
@@ -1001,11 +975,10 @@ propositional calculus: https://doc.sagemath.org/html/en/reference/logic/sage/lo
 how to enter $\land, \lor, \implies$ and $\neg$.
 \end{rag}
 \begin{rag}[
-id="intro#exercisesontruthtables",
 title="Exercises on truth tables",
 type="exercise",
-keywords={"Exercise 1.27", "Exercise 1.28"},
-parents={"intro#propositionallogic", "intro#truthtables"},
+label="exercisesontruthtables",
+parents="{propositionallogic, truthtables}",
 nooftokens = 198
 ]
 Exercise 1.27:
@@ -1032,12 +1005,11 @@ $x_1 \implies x_2 \equiv (\neg x_1)\lor x_2$
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#variablesandpredicates",
 title="Predicates with variables and quantification",
 type="content",
-keywords={"predicate", "for all", "for every", "there exists", "Definition 1.29", "Example 1.30", "Example 1.31"},
-parents={"intro#propositionallogic"},
-nooftokens = 808
+label="variablesandpredicates",
+parents="{propositionallogic}",
+nooftokens = 788
 ]
 Subsection 1.5.4: Variables, predicates and quantification
 
@@ -1099,17 +1071,17 @@ Example 1.31:
 
     Here is a statement about real numbers
     $$
-    x^2 = 1 \qquad \implies (x-1)(x+1)(x-2) = 0
+    x > 0 \qquad \implies \qquad x^2 > 0.
     \tag{1.8}$$
-    This statement reads: no matter which real number $x$ you pick, if $x^2 = 1$,
-    then $(x-1)(x+1)(x-2) = 0$. We definitely want this to be true. Being true means
-    that (1.8) must hold for all numbers $x$, also $x = 2$,
+    This statement reads: no matter which real number $x$ you pick, if $x > 0$,
+    then $x^2 > 0$. We definitely want this to be true. Being true means
+    that (1.8) must hold for all numbers $x$, also $x = -7$,
     which reads
     $$
-    2^2 = 4 = 1  \qquad \implies \qquad (2-1)(2+1)(2-2) = 0 = 0
+    - 7 > 0 \qquad \implies \qquad (-7)^2 = 49 > 0.
     $$
     The above statement is an example of a false implies true statement, which
-    we want to be true.
+    we want to be true: even though $-7$ is negative, its square is positive.
 
 In general terms, in proving the statement that $p(x) \implies q(x)$ holds for every $x$ in
     some set $S$, we are really only interested in $x\in S$ for which $p(x)$ is true, since
@@ -1120,11 +1092,10 @@ In general terms, in proving the statement that $p(x) \implies q(x)$ holds for e
 /Example
 \end{rag}
 \begin{rag}[
-id="intro#datquantification",
 title="Datalogi test",
 type="exercise",
-keywords={"Quizexercise 1.32"},
-parents={"intro#variablesandpredicates"},
+label="datquantification",
+parents="{variablesandpredicates}",
 nooftokens = 109
 ]
 Quizexercise 1.32:
@@ -1145,11 +1116,10 @@ $\exists x\in \emptyset: x = 7$
 /Quizexercise
 \end{rag}
 \begin{rag}[
-id="intro#proofsandinference",
 title="Proofs and inference, structure of proofs",
 type="content",
-keywords={"inference"},
-parents={"intro#variablesandpredicates"},
+label="proofsandinference",
+parents="{variablesandpredicates}",
 nooftokens = 548
 ]
 Subsection 1.5.5: Proofs and inference rules
@@ -1198,33 +1168,19 @@ However, for $x \geq 0 \implies x^2 \geq 0$ we cannot link the two propositions 
 simply because $\forall x\in \mathbb{Z}; x^2 \geq 0 \implies x \geq 0$ is false (for $x= -1$).
 \end{rag}
 \begin{rag}[
-id="intro#inferenceineq",
 title="Exercises on inference and implications in proofs",
 type="exercise",
-keywords={"Exercise 1.33", "Exercise 1.34"},
-parents={"intro#proofsandinference", "intro#orderingnumbers"},
-nooftokens = 362
+label="inferenceineq",
+parents="{proofsandinference}",
+nooftokens = 164
 ]
 Exercise 1.33:
 
 Prove that
 $$
-(x < y) \land ((y+3) < (z+10)) \implies (x+37) < (z+44)
+(x < y) \land ((y+3) < (z+10)) \implies (x+37) < (z+44).
 $$
-for every $x, y, z\in \mathbb{Z}$ (see Definition {?}definition:positiveorder{/?} with $A = \mathbb{Z}$ for the precise definition of $<$).
 Write out every inference rule!
-
-\begin{hint}
-You need to be very precise here. What does $x < y$ mean precisely if $x, y\in \mathbb{Z}$? In
-Definition {?}definition:positiveorder{/?} you will see that it means that $y - x\in \mathbb{N}$. From this
-you need to deduce
-\begin{enumerate}\item (i)
-$(x < y) \land (y < z) \implies x < z$
-\item (ii)
-$x < y \implies x + z < y + z$
-\end{enumerate}
-for every $x, y, z\in \mathbb{Z}$
-\end{hint}
 
 /Exercise
 
@@ -1249,11 +1205,10 @@ and go through the exercises given to you.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#moreonmathematicalproofs",
 title="More on mathematical proofs",
 type="content",
-keywords={"Example 1.35"},
-parents={"intro#proofsandinference"},
+label="moreonmathematicalproofs",
+parents="{proofsandinference}",
 nooftokens = 1025
 ]
 Subsection 1.5.7: More on mathematical proofs
@@ -1347,11 +1302,10 @@ that the rules of mathematics are universal. You need the absolute truth
 in the court of mathematics (or science).
 \end{rag}
 \begin{rag}[
-id="intro#exerciseonmathematicalproofs",
 title="Exercise on mathematical proofs",
 type="exercise",
-keywords={"Exercise 1.36"},
-parents={"intro#moreonmathematicalproofs"},
+label="exerciseonmathematicalproofs",
+parents="{moreonmathematicalproofs}",
 nooftokens = 89
 ]
 Exercise 1.36:
@@ -1368,11 +1322,10 @@ Use that $q(n) = \neg p(n)$, where $p(n)$ is defined in Example (1.35).
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#proofbycontradiction",
 title="",
 type="content",
-keywords={"contradiction", "Example 1.37", "Example 1.38"},
-parents={"intro#moreonmathematicalproofs"},
+label="proofbycontradiction",
+parents="{moreonmathematicalproofs}",
 nooftokens = 1100
 ]
 Subsection 1.5.8: Proof by contradiction
@@ -1463,11 +1416,10 @@ according to the law of the excluded middle, we must have that $p = \neg p_1$ is
 /Example
 \end{rag}
 \begin{rag}[
-id="intro#infinitudeprimenumbers",
 title="Exercise on infinitude of the prime numbers",
 type="exercise",
-keywords={"Exercise 1.39"},
-parents={"intro#proofbycontradiction"},
+label="infinitudeprimenumbers",
+parents="{proofbycontradiction}",
 nooftokens = 299
 ]
 Exercise 1.39:
@@ -1514,12 +1466,11 @@ must be divisible by a prime number.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#moreonsets",
 title="More on sets, operations on sets and so forth",
 type="content",
-keywords={"Section 1.6", "Exercise 1.40", "Exercise 1.41", "Definition 1.42", "Exercise 1.43", "Exercise 1.44"},
-parents={},
-nooftokens = 1472
+label="moreonsets",
+parents="{}",
+nooftokens = 1471
 ]
 Section 1.6: More on sets
 
@@ -1646,7 +1597,7 @@ Is it possible for a set with $5$ elements to be equal to a set with $7$ element
 
 Sets may be explored using (only) python. This is illustrated in the snippet below. 
 
-<a href="#aaa4f860-8c08-4e37-afd4-591c419af630" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=aaa4f860-8c08-4e37-afd4-591c419af630 class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
+<a href="#a1ba78ff-bab9-4dc2-b351-7bce41899013" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=a1ba78ff-bab9-4dc2-b351-7bce41899013 class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
 X = {1, 2, 3}
 Y = {2, 3, 1}
 print("X=Y is ", X==Y)
@@ -1665,12 +1616,11 @@ Come up with three lines of Sage code that verifies $\{1, 2, 3\} \neq \{1, 2, 4\
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#theemptyset",
 title="The empty set",
 type="content",
-keywords={"Exercise 1.45"},
-parents={"intro#moreonsets"},
-nooftokens = 208
+label="theemptyset",
+parents="{moreonsets}",
+nooftokens = 209
 ]
 Subsection: The empty set
 
@@ -1682,7 +1632,7 @@ $$
 \emptyset = \{\}\qquad\text{and}\qquad |\emptyset| = 0.
 $$
 
-<a href="#d042544b-91db-4702-a233-b4e9f77ca422" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=d042544b-91db-4702-a233-b4e9f77ca422 class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
+<a href="#fd81ef2f-1167-486f-abeb-ec0998be59ec" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=fd81ef2f-1167-486f-abeb-ec0998be59ec class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
 emptyset = set()
 print(len(emptyset))
 </script></div></div>
@@ -1698,12 +1648,11 @@ Why is this? Evaluate the python snippet below and explain.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#containsforsets",
 title="Contains for sets",
 type="content",
-keywords={"Quizexercise 1.46"},
-parents={"intro#moreonsets"},
-nooftokens = 614
+label="containsforsets",
+parents="{moreonsets}",
+nooftokens = 625
 ]
 Subsection 1.6.2: The symbols $\in$ and $\notin$
 
@@ -1726,7 +1675,7 @@ $$
 
 Belongs to ($\in$) is straightforward in python.
 
-<a href="#93b57aec-43bd-4636-98e4-203bc1acf891" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=93b57aec-43bd-4636-98e4-203bc1acf891 class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
+<a href="#a9481061-514f-4d76-8f3b-4f3b9fda6aec" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=a9481061-514f-4d76-8f3b-4f3b9fda6aec class = "collapse Sage envbuttons"><div class=sagepython><script type="text/x-sage">
 S = {1,2,3}
 print("S = ", S)
 print("The element 1 is in S: ", 1 in S)
@@ -1776,11 +1725,10 @@ if $\{1, 2, 3\}$ is in the second empty box and $\{4, 5, 6\}$ in the fourth empt
 /Quizexercise
 \end{rag}
 \begin{rag}[
-id="intro#subsets",
 title="Subsets",
 type="content",
-keywords={"Exercise 1.47", "Exercise 1.48", "Exercise 1.49", "Quizexercise 1.50", "Quizexercise 1.51"},
-parents={"intro#moreonsets", "intro#containsforsets"},
+label="subsets",
+parents="{moreonsets, containsforsets}",
 nooftokens = 866
 ]
 Subsection 1.6.3: Subsets
@@ -1901,12 +1849,11 @@ Quizexercise 1.51:
 /Quizexercise
 \end{rag}
 \begin{rag}[
-id="intro#setbuildernotation",
 title="Set builder notation",
 type="content",
-keywords={"Example 1.52", "Exercise 1.53", "Exercise 1.54", "Exercise 1.55", "Exercise 1.56", "Exercise 1.57"},
-parents={"intro#subsets"},
-nooftokens = 1127
+label="setbuildernotation",
+parents="{subsets}",
+nooftokens = 1071
 ]
 Subsection 1.6.4: Set-builder notation
 
@@ -1944,9 +1891,6 @@ in $S$, then we often use the notation (using $,$ instead of $\land$)
 $$
 \{x\in S \mid p_1(x), \dots, p_n(x)\}\quad\text{for}\quad  \{x\in S \mid p_1(x)\land \dots\land p_n(x)\}.
 $$
-
-In the exercises below we have sloppily used the ordering $<$ before it is formally defined. We apologize
-to the reader and refer to Section {?}section:orderingnumbers{/?}.
 
 
 Exercise 1.53:
@@ -2012,7 +1956,7 @@ Suppose that $X = \mathbb{R}$ and
 $$
 Y = \{x\in \mathbb{R} \mid x > 0,\, x < 2\}.
 $$
-Then write down precisely what $X\setminus Y = \{x\in X\mid x\not\in Y\}$ is i.e., find suitable predicates $q_1, q_2$ in the
+Then write down precisely what $X\setminus Y$ is i.e., find suitable predicates $q_1, q_2$ in the
 variable $x$, such that $q(x) = q_1(x) \lor q_2(x)$
 and
 $$
@@ -2054,11 +1998,10 @@ and $q_1, q_2$ and $q_2$ are suitable predicates in the variables $x, y$.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#operationsonsets",
 title="Operations on sets",
 type="content",
-keywords={"intersection", "union", "complementary", "Exercise 1.58", "Exercise 1.59", "Exercise 1.60", "Exercise 1.61", "Quizexercise 1.62"},
-parents={"intro#moreonsets"},
+label="operationsonsets",
+parents="{moreonsets}",
 nooftokens = 1322
 ]
 Subsection 1.6.5: Intersections, unions and the symbols $\cap,\,\, \cup$ and $\setminus$
@@ -2219,11 +2162,10 @@ $$
 /Quizexercise
 \end{rag}
 \begin{rag}[
-id="intro#tuplessets",
-title="Pairs, triples and tuples of sets",
+title="Pairsm triples and tuples of sets",
 type="content",
-keywords={"tuple", "Example 1.63", "Exercise 1.64", "Definition 1.65", "Exercise 1.66", "Exercise 1.67", "Exercise 1.68"},
-parents={"intro#operationsonsets"},
+label="tuplessets",
+parents="{operationsonsets}",
 nooftokens = 916
 ]
 Subsection 1.6.6: Pairs, triples and tuples
@@ -2340,11 +2282,10 @@ Use python to solve Exercise (1.67) by playing with (and extending) the code bel
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#orderingnumbers",
 title="Ordering numbers in general",
 type="content",
-keywords={"Section 1.7", "Definition 1.69", "Remark 1.70", "Exercise 1.71"},
-parents={"intro#naturalnumbersandintegers", "intro#rationalnumbers", "intro#realnumbers"},
+label="orderingnumbers",
+parents="{naturalnumbersandintegers, rationalnumbers, realnumbers}",
 nooftokens = 671
 ]
 Section 1.7: Ordering numbers
@@ -2415,11 +2356,10 @@ Prove that
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#orderingintegers",
 title="Ordering the integers",
 type="content",
-keywords={"Exercise 1.72", "Quizexercise 1.73"},
-parents={"intro#orderingnumbers"},
+label="orderingintegers",
+parents="{orderingnumbers}",
 nooftokens = 657
 ]
 Subsection 1.7.1: Ordering $\mathbb{Z}$
@@ -2482,11 +2422,10 @@ Quizexercise 1.73:
 /Quizexercise
 \end{rag}
 \begin{rag}[
-id="intro#orderingrationalnumbers",
 title="Ordering rational numbers",
 type="content",
-keywords={"Proposition 1.74"},
-parents={"intro#orderingnumbers"},
+label="orderingrationalnumbers",
+parents="{orderingnumbers}",
 nooftokens = 326
 ]
 Subsection 1.7.2: Ordering $\mathbb{Q}$
@@ -2520,11 +2459,10 @@ the condition in the proposition is satsified.
 \end{proof}
 \end{rag}
 \begin{rag}[
-id="intro#positiverationalsnosmallestelement",
 title="Exercise on proof by contradiction that positive rational numbers have no smallest element",
 type="exercise",
-keywords={"Exercise 1.75"},
-parents={"intro#orderingrationalnumbers", "intro#proofbycontradiction"},
+label="positiverationalsnosmallestelement",
+parents="{orderingrationalnumbers, proofbycontradiction}",
 nooftokens = 36
 ]
 Exercise 1.75:
@@ -2536,12 +2474,11 @@ exist a smallest positive rational number.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#exercisesorderingrationalnumbers",
 title="Exercises related to ordering of rational numbers",
 type="exercise",
-keywords={"Exercise 1.76", "Quizexercise 1.77", "Exercise 1.78", "Exercise 1.79", "Exercise 1.80"},
-parents={"intro#orderingrationalnumbers"},
-nooftokens = 1455
+label="exercisesorderingrationalnumbers",
+parents="{orderingrationalnumbers}",
+nooftokens = 886
 ]
 Exercise 1.76:
 
@@ -2565,7 +2502,7 @@ $$
 $$
 when $n\in \mathbb{N}$ grows and becomes very big?
 
-<a href="#0619f655-80f8-4476-897b-6dc3bb0314df" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=0619f655-80f8-4476-897b-6dc3bb0314df class = "collapse Sage envbuttons"><div class=sage><script type="text/x-sage">
+<a href="#ee51208d-738b-4be5-ab07-b205eb978cac" class ="btn btn-default Sagebutton" data-toggle="collapse"></a><div id=ee51208d-738b-4be5-ab07-b205eb978cac class = "collapse Sage envbuttons"><div class=sage><script type="text/x-sage">
 a = 1
 b = 2
 n = 100
@@ -2649,94 +2586,12 @@ we need to show that $a b + a d < b a + b c$.
 \end{orderquiz}
 
 /Quizexercise
-
-
-Exercise 1.78:
-
-Similarly to the quiz above, assume that  
-$$
-  \frac{a}{b} < \frac{c}{d}.
-  $$
-  Write down a precise argument showing that
-  $$
-  \frac{a + c}{b + d} < \frac{c}{d}.
-  $$
-  
-/Exercise
-
-
-Exercise 1.79:
-
-On Twitter: https://twitter.com/Ramangupta4/status/1162999733142482945, Raman Gupta posted the note below
-
-\begin{excluderag}
-
-\end{excluderag}
-
-For a natural number $m\in \mathbb{N}$,
-$$
-m! = m (m-1) (m-2)\cdot \dots \cdot 2\cdot 1. 
-$$
-For example, $3! = 6$ and $5! = 120$. What is the answer for the
-question in the note?
-
-\begin{hint}
-
-Experiment a bit with Sage: define a function $f(n)$, which computes
-$$
-2^{n!} - 2^n!
-$$
-
-Then look at
-
-$$
-f(1), f(2), f(3), f(4), f(5), \dots
-$$
-
-\end{hint}
-
-/Exercise
-
-The exercise below shows that our trick for finding rational numbers
-in between two given rational numbers can be made into a machine for
-generating all positive rational numbers!
-
-
-Exercise 1.80:
-
-Can you spot the system in the fractions in the diagram below?
-
-Once you see the system, extend the diagram with the next level downwards. Is every
-positive fraction present in this diagram if one keeps adding levels?
-
-\begin{hint}
-Suppose that
-$$
-\frac{p}{q} < \frac{r}{s}
-$$
-and $q r - s p = 1$. Then for
-$$
-\frac{p}{q} <  \frac{p+r}{q+s} < \frac{r}{s},
-$$
-we have $q (p+r) - (q+s) p = 1$ and $(q+s) r - (p + r) s = 1$. If $\frac{a}{b}$ is 
-a positive fraction, such that
-$$
-\frac{p}{q} <  \frac{a}{b} < \frac{r}{s},
-$$
-show that 
-$$
-a + b = (r+s)(q a - b p)+(p+q)(b r - a s)\geq p+q+r+s.
-$$
-\end{hint}
-
-/Exercise
 \end{rag}
 \begin{rag}[
-id="intro#orderingrealnumbers",
 title="Ordering of the real numbers",
 type="content",
-keywords={"Exercise 1.81"},
-parents={"intro#orderingnumbers", "intro#rationalnumbers"},
+label="orderingrealnumbers",
+parents="{orderingnumbers, rationalnumbers}",
 nooftokens = 369
 ]
 Subsection 1.7.3: Ordering $\mathbb{R}$
@@ -2779,11 +2634,10 @@ $$
 does not have a smallest upper bound inside $\mathbb{Q}$.
 \end{rag}
 \begin{rag}[
-id="intro#proofbyinduction",
 title="Proof by induction",
 type="content",
-keywords={"Section 1.8", "Theorem 1.82", "Example 1.83"},
-parents={"intro#variablesandpredicates"},
+label="proofbyinduction",
+parents="{variablesandpredicates}",
 nooftokens = 1813
 ]
 Section 1.8: Proof by induction
@@ -2943,12 +2797,11 @@ After one year you owe
 /Example
 \end{rag}
 \begin{rag}[
-id="intro#exercisesoninduction",
 title="Exercises on induction",
 type="exercise",
-keywords={"Exercise 1.84", "Exercise 1.85", "Exercise 1.86", "Exercise 1.87", "Exercise 1.88", "Exercise 1.89"},
-parents={"intro#proofbyinduction"},
-nooftokens = 650
+label="exercisesoninduction",
+parents="{proofbyinduction}",
+nooftokens = 651
 ]
 Exercise 1.84:
 
@@ -3000,7 +2853,7 @@ Exercise 1.87:
 Prove by induction that
 $$
 1^2 + 2^2 + 3^2 + \cdots + n^2 = \frac{n(n+1)(2n + 1)}{6}.
-$$
+$$, 
 
 /Exercise
 
@@ -3030,11 +2883,10 @@ $n > m$, then at least one container must contain more than one item.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#functions",
 title="The concept of a function",
-type="content",
-keywords={"domain", "codomain", "Section 1.9", "Definition 1.90", "Remark 1.91", "Example 1.92", "Exercise 1.93"},
-parents={"intro#moreonsets", "intro#tuplessets", "intro#computeralgebra"},
+type=content"",
+label="functions",
+parents="{moreonsets, tuplessets, computeralgebra}",
 nooftokens = 1623
 ]
 Section 1.9: The concept of a function
@@ -3162,11 +3014,10 @@ become world famous.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#moreonfunctions",
 title="When are two function the same and notations for defining functions",
 type="content",
-keywords={"Example 1.94", "Exercise 1.95"},
-parents={"intro#functions"},
+label="moreonfunctions",
+parents="{functions}",
 nooftokens = 627
 ]
 Subsection 1.9.1: When are two functions the same?
@@ -3234,11 +3085,10 @@ does not make sense to draw a graph.
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#compositionogfunctions",
 title="Composition of functions",
 type="content",
-keywords={"Remark 1.96", "Exercise 1.97", "Exercise 1.98"},
-parents={"intro#functions"},
+label="compositionogfunctions",
+parents="{functions}",
 nooftokens = 616
 ]
 Subsection 1.9.3: Composition of functions
@@ -3304,11 +3154,10 @@ What is $(g\circ f)(t)$ as a function from $\mathbb{R}$ to $\mathbb{R}$ in terms
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#functionsfromandintoproducts",
 title="Functions from and into products",
 type="content",
-keywords={"Definition 1.99", "Example 1.100"},
-parents={"intro#functions", "intro#tuplessets"},
+label="functionsfromandintoproducts",
+parents="{functions, tuplessets}",
 nooftokens = 375
 ]
 Subsection 1.9.4: Functions from and into products
@@ -3359,11 +3208,10 @@ f_3((1, 2, 3)) &= 27.
 /Example
 \end{rag}
 \begin{rag}[
-id="intro#specialpropertiesoffunctions",
 title="Special properties of functions",
 type="content",
-keywords={"inverse function", "injective", "surjective", "Definition 1.101", "Exercise 1.102", "Exercise 1.103", "Exercise 1.104", "Exercise 1.105", "Exercise 1.106", "Example 1.107", "Exercise 1.108", "Exercise 1.109"},
-parents={"intro#functions"},
+label="specialpropertiesoffunctions",
+parents="{functions}",
 nooftokens = 1148
 ]
 Subsection 1.9.5: Injective and surjective functions
@@ -3511,11 +3359,10 @@ $S = \{x\in \mathbb{R}\mid x\geq 0\}$?
 /Exercise
 \end{rag}
 \begin{rag}[
-id="intro#preimage",
 title="The preimage of a subset with respect to a function",
 type="content",
-keywords={"Definition 1.110", "Example 1.111", "Exercise 1.112", "Quizexercise 1.113"},
-parents={"intro#moreonsets"},
+label="preimage",
+parents="{moreonsets}",
 nooftokens = 621
 ]
 Subsection 1.9.7: The preimage
@@ -3602,11 +3449,10 @@ $$
 /Quizexercise
 \end{rag}
 \begin{rag}[
-id="intro#functionsandneuralnetworks",
 title="Functions and neural networks",
 type="content",
-keywords={"Remark 1.114", "Exercise 1.115", "Exercise 1.116", "Exercise 1.117"},
-parents={"intro#functions", "intro#functionsfromandintoproducts", "intro#computeralgebra"},
+label="functionsandneuralnetworks",
+parents="{functions, functionsfromandintoproducts, computeralgebra}",
 nooftokens = 1995
 ]
 Subsection 1.9.8: Neural networks
@@ -3786,7 +3632,7 @@ Exercise 1.117:
      p(1, 1) &= 0?
   \end{aligned}$$
   What if you are allowed to use a neural network composed as $\mathbb{R}^2\rightarrow \mathbb{R}^2\rightarrow \mathbb{R}$ (one hidden layer)
-  ? 
+  ?
   
 /Exercise
 

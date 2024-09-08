@@ -59,19 +59,24 @@ const extractRagChunks = (slateElement: CustomElement): Chunk[] => {
     // Parse metadata into key-value pairs
     const metadata: ChunkMetadata = {};
 
-    metadataString.split(",").forEach((meta) => {
+    metadataString.split("\n").forEach((meta) => {
       if (meta === "") {
         return;
       }
+      // Remove leading and trailing whitespaces and trailing commas
+
+      meta = meta.trim().replace(/,$/, "");
+
       let [key, value] = meta.split("=");
       key = key.trim();
+      value = value.trim();
       if (value === undefined) {
         return;
       }
       let parsedValue = value.trim().replace(/^"(.*)"$/, "$1");
       let finalValue: any;
 
-      if (key == "parents") {
+      if (["parents", "keywords"].includes(key)) {
         const match = parsedValue.match(/^\{(.*?)\}$/);
         if (match) {
           // If the matched group is empty, return an empty array.
@@ -80,6 +85,10 @@ const extractRagChunks = (slateElement: CustomElement): Chunk[] => {
           } else {
             // Split the values by commas and return the array.
             finalValue = match[1].split(",");
+            // Remove quotes from each value
+            finalValue = finalValue.map((val: string) => {
+              return val.trim().replace(/^"(.*)"$/, "$1");
+            });
           }
         } else {
           finalValue = [];
@@ -106,9 +115,9 @@ const rebuildMetadata = (metadata?: ChunkMetadata): string => {
   const metadataObject: any = {};
   for (const [key, value] of Object.entries(metadata)) {
     const trimmedKey = key.trim();
-    if (["title", "type", "label"].includes(trimmedKey)) {
+    if (["id", "title", "type", "label"].includes(trimmedKey)) {
       metadataObject[trimmedKey] = `"${value}"`;
-    } else if (trimmedKey == "parents") {
+    } else if (["parents", "keywords"].includes(trimmedKey)) {
       if (value.length == 0) {
         metadataObject[trimmedKey] = `"{}"`;
       } else {
@@ -116,8 +125,8 @@ const rebuildMetadata = (metadata?: ChunkMetadata): string => {
         if (!Array.isArray(value)) {
           typedValue = [];
         }
-        const parents = typedValue.map((parent: string) => `${parent}`);
-        metadataObject[trimmedKey] = `"{${parents.join(",")}}"`;
+        const items = typedValue.map((parent: string) => `"${parent}"`);
+        metadataObject[trimmedKey] = `{${items.join(", ")}}`;
       }
     } else if (trimmedKey === "nooftokens") {
       metadataObject[trimmedKey] = value;

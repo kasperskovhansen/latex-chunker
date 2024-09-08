@@ -1,5 +1,6 @@
 import { selectParsedList, selectRawContent } from "@/app/store/editorSlice";
 
+import { cloneDeep } from "lodash";
 import { downloadFile } from "@/app/util/file-export";
 import { rebuildLatexDocument } from "@/app/util/latex-parser";
 import { useSelector } from "react-redux";
@@ -8,13 +9,19 @@ export default function Toolbar() {
   const parsedList = useSelector(selectParsedList);
 
   const exportChunks = () => {
-    const json = JSON.stringify(parsedList);
+    const listToExport = cloneDeep(parsedList).map((chunk) => {
+      delete chunk?.id;
+      delete chunk?.backgroundColor;
+      delete chunk?.color;
+      return chunk;
+    });
+    const json = JSON.stringify(listToExport, null, 2);
     downloadFile("chunks.json", json, "application/json");
   };
 
   function exportLaTeX() {
     const text = rebuildLatexDocument(parsedList);
-    downloadFile("document.tex", text, "text/plain");
+    downloadFile("document.tex", text, null, 2, "text/plain");
   }
 
   return (

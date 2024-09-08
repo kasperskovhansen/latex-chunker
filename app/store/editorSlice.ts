@@ -18,18 +18,21 @@ export interface Chunk {
 }
 
 export interface ChunkMetadata {
+  id?: string;
   title?: string;
   type?: string;
   label?: string;
   parents?: string[];
+  keywords?: string[];
   nooftokens?: number;
   [key: string]: any;
 }
 
 // Initial state for editor
-interface EditorState {
+export interface EditorState {
   rawContent: CustomElement[]; // Raw content from editor
   parsedList: Chunk[]; // List extracted from rawContent
+  chunks: Chunk[];
 }
 
 const initialState: EditorState = {
@@ -42,6 +45,7 @@ const initialState: EditorState = {
     //   metadata: { title: "Loading content..." },
     // },
   ], // Initial empty list
+  chunks: [],
 };
 
 const editorSlice = createSlice({
@@ -79,6 +83,9 @@ const editorSlice = createSlice({
       // Convert parsedList back to rawContent
       state.rawContent = unparseContent(newParsedList);
     },
+    setChunks(state, action: PayloadAction<Chunk[]>) {
+      state.chunks = action.payload;
+    },
 
     // Helper to add new Chunk in the parsed list
     addChunk(state, action: PayloadAction<string>) {
@@ -89,6 +96,7 @@ const editorSlice = createSlice({
           type: "chunk",
           label: "new",
           parents: [],
+          keywords: [],
           nooftokens: 0,
         },
         id: state.parsedList.length,
@@ -145,6 +153,7 @@ export const selectParsedList = (state: RootState) => state.editor.parsedList;
 export const {
   setRawContent,
   setParsedList,
+  setChunks,
   addChunk,
   updateChunk,
   removeChunk,
